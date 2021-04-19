@@ -19,7 +19,6 @@ class Product_Model extends CI_Model
     {
         $this->db->where('id',$id);
         $query = $this->db->get("product")->row();
-
         return $query;
     }
 
@@ -36,27 +35,7 @@ class Product_Model extends CI_Model
             
     }
 
-    public function getcart()
-    {
-        $this->db->get();
-    }
 
-    
-    // public function get_single_product($id)
-    // {
-        
-         
-    //    /**$this->db->from('vehicles');
-    //         $this->db->where('id_vehicle', $id_vehicle);*/
-    //         $query = $this->db->query("SELECT * FROM product WHERE id = '$id'");
-    //         $row = $query->row();
-    //         return $row;/*$this->db->get()->row();*/
-       
-    //    /*  return $this->db->get_where('product',['id'=>$id])->row(); */
-       
-       
-       
-    // }
 
     public function get_all_images($id)
     {
@@ -98,5 +77,7 @@ class Product_Model extends CI_Model
        return $result;
        
     }
+
+    
 
 }

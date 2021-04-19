@@ -54,13 +54,17 @@
                         </div>
                     </div>
                     <div class="col-lg-6 text-end">
+                    
                         <ul class="header-dropdown">
-                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                            <li class="mobile-wishlist">
+                            
+                            
                             </li>
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                             <?php echo $this->lang->line('my_account'); ?>
                             </li>
                         </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -265,16 +269,19 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="header-contact">
+                        
                             <ul>
                                 <li><?php echo $this->lang->line('welcome'); ?></li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i><?php echo $this->lang->line('call_us'); ?>: 123 - 456 - 7890</li>
                             </ul>
                         </div>
+                        
                     </div>
                     <div class="col-lg-6 text-end">
                         <ul class="header-dropdown">
-                            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-                            </li>
+                            <li class="mobile-wishlist"> <a href="#" data-bs-toggle="modal" data-bs-target="#wishlist<?php echo $this->session->userdata('id'); ?>" title="Quick View">
+                                       <i class="fa fa-heart" aria-hidden="true"></i>
+                                    </a>
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 <?php echo $this->lang->line('my_account'); ?>
                                 <ul class="onhover-show-div">
@@ -293,6 +300,7 @@
                                 </ul>
                             </li>
                         </ul>
+                        
                     </div>
                 </div>
             </div>

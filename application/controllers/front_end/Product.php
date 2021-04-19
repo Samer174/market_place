@@ -14,8 +14,6 @@ class Product extends CI_Controller
        
         $data = $this->Product_Model->get_single_product($id);
         
-      
-
 
       /*   multiple images for the same product */
       
@@ -32,5 +30,7 @@ class Product extends CI_Controller
       $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes));
       $this->load->view('front/footer');
     }
+
+    
         
 }

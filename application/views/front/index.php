@@ -87,11 +87,7 @@
 
     <!-- Paragraph-->
     <div class="title1 section-t-space">
-<<<<<<< HEAD
-        <h4><?php echo $this->lang->line('special_offer'); ?> hamid</h4>
-=======
-        <h4><?php echo $this->lang->line('special_offer'); ?>  test</h4>
->>>>>>> dda8ec6dd4e1e1cca56713969c32f3aaa656f43f
+        <h4><?php echo $this->lang->line('special_offer'); ?></h4>
         <h2 class="title-inner1"><?php echo $this->lang->line('latest_drops'); ?></h2>
     </div>
     <div class="container">
@@ -130,7 +126,7 @@
                                     <a href="javascript:void(0)" title="Add to Wishlist">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
                                         <i class="ti-search" aria-hidden="true"></i>
                                     </a>
                                     <a href="compare.html" title="Compare">
@@ -678,7 +674,8 @@
 
 
     <!-- Quick-view modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
+    <?php foreach($latest_products as $item):?> 
+    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content quick-view-modal">
@@ -687,13 +684,13 @@
                             aria-hidden="true">&times;</span></button>
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
-                            <div class="quick-view-img"><img src="../assets/front/images/pro3/1.jpg" alt=""
+                            <div class="quick-view-img"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>" alt=""
                                     class="img-fluid blur-up lazyload"></div>
                         </div>
                         <div class="col-lg-6 rtl-text">
                             <div class="product-right">
-                                <h2>Women Pink Shirt</h2>
-                                <h3>$32.96</h3>
+                                <h2><?php echo $item['name'] ;?></h2>
+                                <h3><?php echo $item['price'] ;?></h3>
                                 <ul class="color-variant">
                                     <li class="bg-light0"></li>
                                     <li class="bg-light1"></li>
@@ -726,7 +723,7 @@
                                     </div>
                                 </div>
                                 <div class="product-buttons"><a href="#" class="btn btn-solid">add to cart</a> <a
-                                        href="#" class="btn btn-solid">view detail</a></div>
+                                        href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid">view detail</a></div>
                             </div>
                         </div>
                     </div>
@@ -734,7 +731,89 @@
             </div>
         </div>
     </div>
+    <?php endforeach;?>
+    
     <!-- Quick-view modal popup end-->
+
+
+
+    <!-- wishlist modal starts-->
+    <?php foreach($latest_products as $item):?> 
+    <div class="modal fade bd-example-modal-lg theme-modal " id="wishlist<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal ">
+                <div class="modal-body ">
+                 
+
+                                        <!--section start-->
+                        <section class="wishlist-section section-b-space ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive-xs">
+                                        <table class="table cart-table">
+                                            <thead>
+                                                <tr class="table-head">
+                                                    
+                                                    <th scope="col">product name</th>
+                                                    <th scope="col">price</th>
+                                                    <th scope="col">availability</th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                
+                                                    <td><a href="#"><?php echo $item['name'] ;?></a>
+                                                        <div class="mobile-cart-content row">
+                                                            <div class="col">
+                                                                <p><?php echo $item['status'] ;?></p>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h2 class="td-color"><?php echo $item['price'];?></h2>
+                                                            </div>
+                                                            <div class="col">
+                                                                <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
+                                                                    </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                               
+                                                </tr>
+                                            </tbody>
+                                           
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row wishlist-buttons">
+                                    <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> </div>
+                                </div>
+                            </div>
+                            
+
+                           <?php $wisharray = array(
+                                'id' => $item['id'],
+                                'name' => $item['name'],
+                                'price' => $item['price']
+                            );
+                            ?>
+
+                           
+                            <?php $this->session->set_userdata('product',$wisharray);?>
+
+                           
+                        </section>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <?php endforeach;?>
+    <!-- wishlist modal ends-->
 
 
     <!-- cart start -->
@@ -746,6 +825,5 @@
     <!-- cart end -->
 
 
-
-    <?php $this->load->view('front/footer');?>
-
+   
+    
