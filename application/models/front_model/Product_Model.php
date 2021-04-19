@@ -36,11 +36,6 @@ class Product_Model extends CI_Model
             
     }
 
-    public function getcart()
-    {
-        $this->db->
-    }
-
     
     // public function get_single_product($id)
     // {
