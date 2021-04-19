@@ -87,7 +87,11 @@
 
     <!-- Paragraph-->
     <div class="title1 section-t-space">
+<<<<<<< HEAD
         <h4><?php echo $this->lang->line('special_offer'); ?> hamid</h4>
+=======
+        <h4><?php echo $this->lang->line('special_offer'); ?>  test</h4>
+>>>>>>> dda8ec6dd4e1e1cca56713969c32f3aaa656f43f
         <h2 class="title-inner1"><?php echo $this->lang->line('latest_drops'); ?></h2>
     </div>
     <div class="container">
