@@ -87,7 +87,7 @@
 
     <!-- Paragraph-->
     <div class="title1 section-t-space">
-        <h4><?php echo $this->lang->line('special_offer'); ?>  test</h4>
+        <h4><?php echo $this->lang->line('special_offer'); ?> hamid</h4>
         <h2 class="title-inner1"><?php echo $this->lang->line('latest_drops'); ?></h2>
     </div>
     <div class="container">

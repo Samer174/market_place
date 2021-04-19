@@ -4,6 +4,7 @@ class Product_Model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->library('cart');
     }
 
 
@@ -35,6 +36,12 @@ class Product_Model extends CI_Model
             
     }
 
+    public function getcart()
+    {
+        $this->db->
+    }
+
+    
     // public function get_single_product($id)
     // {
         
