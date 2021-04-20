@@ -123,7 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="javascript:void(0)" title="Add to Wishlist">
+                                    <a href="javascript:void(0)" onclick="creatStorage('<?php echo $item['id'];?>','<?php echo $item['name'];?>','<?php echo $item['price'];?>','<?php echo $item['status'];?>')" title="Add to Wishlist">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -823,6 +823,27 @@
         </a>
     </div>
     <!-- cart end -->
+    <script>
+   function creatStorage (id,name,price,stat){
+    for (i = 0; i < 5; i++) {
+        sessionStorage.setItem('wishID',id);
+       sessionStorage.setItem('wishname',name);
+       sessionStorage.setItem('wishprice',price);
+       sessionStorage.setItem('wishstat',stat);
+      
+       return false;
+  
+}
+       
+    
+    }
+
+    function wish(){
+        let wishid = sessionStorage.getItem('wishID');
+        console.log(wishid);
+    }
+     wish();
+    </script>
 
 
    
