@@ -279,7 +279,7 @@
                     </div>
                     <div class="col-lg-6 text-end">
                         <ul class="header-dropdown">
-                            <li class="mobile-wishlist"> <a href="#" data-bs-toggle="modal" data-bs-target="#wishlist<?php echo $this->session->userdata('id'); ?>" title="Quick View">
+                            <li class="mobile-wishlist"> <a href="#" data-bs-toggle="modal" data-bs-target="#wishlist" title="View fav">
                                        <i class="fa fa-heart" aria-hidden="true"></i>
                                     </a>
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
