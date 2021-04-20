@@ -123,7 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="javascript:void(0)" title="Add to Wishlist">
+                                    <a href="#"  onclick="addWish('<?php echo $item['id'];?>','<?php echo $item['name'];?>','<?php echo $item['price'];?>','<?php echo $item['status'];?>')" title="Add to my fav">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -736,10 +736,31 @@
     <!-- Quick-view modal popup end-->
 
 
+<?php $lwish = $this->session->userdata('product_id');
+/* echo $this->session->userdata('product_id')['name']; */
+if(!empty($lwish))
+{
+
+
+foreach($lwish as $item){
+    echo $item['name'];
+}}
+/* for($i=0;$i<count($lwish);$i++){
+    echo $lwish[$i];
+}
+echo $lwish['name']; */
+// print_r($lwish);
+//  foreach( $lwish as $it)
+//  {
+//      echo $it['name'];
+//  }
+ 
+ ?>
+
 
     <!-- wishlist modal starts-->
-    <?php foreach($latest_products as $item):?> 
-    <div class="modal fade bd-example-modal-lg theme-modal " id="wishlist<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
+    
+    <div class="modal fade bd-example-modal-lg theme-modal " id="wishlist" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content quick-view-modal ">
@@ -762,24 +783,36 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                             <?php foreach( $lwish as $it):?> 
+                                                <div id="wishtable">
                                                 <tr>
                                                 
-                                                    <td><a href="#"><?php echo $item['name'] ;?></a>
-                                                        <div class="mobile-cart-content row">
-                                                            <div class="col">
-                                                                <p><?php echo $item['status'] ;?></p>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h2 class="td-color"><?php echo $item['price'];?></h2>
-                                                            </div>
-                                                            <div class="col">
-                                                                <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
-                                                                    </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
-                                                            </div>
+                                                <td><a href="#"><?php echo $it['name'] ;?></a>
+                                                    <div class="mobile-cart-content row">
+                                                        <div class="col">
+                                                            <p></p>
                                                         </div>
-                                                    </td>
-                                               
-                                                </tr>
+                                                        <div class="col">
+                                                            <h2 class="td-color"></h2>
+                                                        </div>
+                                                        <div class="col">
+                                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
+                                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
+                                                        </div>
+                                                    </div>
+                                                        <td>
+                                                            <h2>$<?php echo $it['price'] ;?></h2>
+                                                        </td>
+                                                        <td>
+                                                            <p><?php echo $it['status'] ;?></p>
+                                                        </td>
+                                                        <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                                                class="cart"><i class="ti-shopping-cart"></i></a></td>
+                                                                            </td>
+                                           
+                                            </tr> 
+                                                </div>
+                                             <?php endforeach;?>
                                             </tbody>
                                            
                                             
@@ -792,15 +825,7 @@
                             </div>
                             
 
-                           <?php $wisharray = array(
-                                'id' => $item['id'],
-                                'name' => $item['name'],
-                                'price' => $item['price']
-                            );
-                            ?>
-
-                           
-                            <?php $this->session->set_userdata('product',$wisharray);?>
+                          
 
                            
                         </section>
@@ -812,9 +837,10 @@
         </div>
     </div>
    
-    <?php endforeach;?>
+   
     <!-- wishlist modal ends-->
 
+    
 
     <!-- cart start -->
     <div class="addcart_btm_popup" id="fixed_cart_icon">
@@ -825,5 +851,33 @@
     <!-- cart end -->
 
 
+   <script>
+   function addWish($id,$name,$price,$status)
+   {
+       /* console.log($price); */
+    $.ajax(
+        {
+           type:'POST',
+           url:'front_end/Product/wishlist',
+           data:{id:$id,
+           name :$name,
+           price:$price,
+           status:$status},
+           success : function()
+           {
+                $('#wishtable').load('front',function()
+                {
+                    alert('load happened');
+                });
+           }
+
+       }).done(function(){
+           alert($id);
+       });
+
+      
+   }
    
+   
+   </script>
     

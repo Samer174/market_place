@@ -25,12 +25,43 @@ class Product extends CI_Controller
 
         $sizes = $this->Product_Model->get_sizes($id);
      /*  print_r($sizes); */
+     
        
       $this->load->view('front/header');
       $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes));
       $this->load->view('front/footer');
     }
 
+    public function wishlist()
+    {
+     $id =  $this->input->post('id');
+     $name =  $this->input->post('name');
+     $price =  $this->input->post('price');
+     $status =  $this->input->post('status');
+     $wishlist = array(0=> array(
+       'id'=>$id,
+       'name'=>$name,
+       'price'=>$price,
+       'status'=>$status
+     ));
+     
+
+      $this->session->set_userdata('product_id',$wishlist);
+      
+         
+      
+      
+    }
+
+    public function destroy(){
+      $this->session->sess_destroy();
+    }
+
+
+    
+
+
+   
     
         
 }
