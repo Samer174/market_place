@@ -15,12 +15,14 @@ class About extends CI_Controller
         $this->load->view('About_view',array('r_data'=>$r_data));
         if(isset($_POST['submit_des'])){
             if($r_data == null){
-                $this->db->insert('about',array('description'=>$_POST['des']));
+                $this->db->insert('about',array('description'=>$_POST['des'],
+                                                'description_ar'=>$_POST['des_ar']));
                 redirect(base_url('about'), 'refresh');
             }
             else{
                 $this->db->where(array('about_id'=>$r_data[0]['about_id']));
-                $this->db->update('about',array('description'=>$_POST['des']));
+                $this->db->update('about',array('description'=>$_POST['des'],
+                                                'description_ar'=>$_POST['des_ar']));
                 redirect(base_url('about'), 'refresh');
             }
         }

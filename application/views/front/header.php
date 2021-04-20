@@ -641,7 +641,7 @@
                                                         <li><a href="<?php echo base_url('front_end/Account/dashboard');?>">Dashboard</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/');?>">login</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/register');?>">register</a></li>
-                                                        <li><a href="<?php echo base_url('front_end/Account/contact');?>">contact</a></li>
+                                                        <li><a href="<?php echo base_url('front_end/contact_info');?>">contact</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/forget_pwd');?>">forget password</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/profile');?>">profile</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/checkout');?>">checkout</a></li>
@@ -674,7 +674,7 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="<?php echo base_url('front_end/About_page');?>">about us</a></li>
+                                                <li><a href="<?php echo base_url('front_end/About');?>">about us</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Review');?>">review</a>
                                                 </li>
@@ -751,8 +751,8 @@
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-shopping-cart"></i></div>
                                             <span class="cart_qty_cls">2</span>
-                                            <ul class="show-div shopping-cart">
-                                                <li>
+                                            <ul id="detail_cart_home" class="show-div shopping-cart">
+                                                <!-- <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="me-3"
                                                                 src="<?php echo base_url('/assets/front/images/fashion/product/1.jpg');?>"></a>
@@ -765,58 +765,17 @@
                                                     </div>
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times"
                                                                 aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('assets/front/images/fashion/product/2.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('/assets/front/images/fashion/product/1.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('assets/front/images/fashion/product/2.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                
+                                                <!-- <li>
                                                     <div class="total">
                                                         <h5>subtotal : <span>$299.00</span></h5>
                                                     </div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                <!-- <li>
                                                     <div class="buttons"><a href="<?php echo base_url('front_end/Account/Cart');?>" class="view-cart"><?php echo $this->lang->line('view_cart'); ?></a>
                                                      <a href="#" class="checkout"><?php echo $this->lang->line('checkout'); ?></a></div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </li>
                                     </ul>

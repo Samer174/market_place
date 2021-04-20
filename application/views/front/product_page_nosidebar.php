@@ -42,13 +42,13 @@
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
-                                    <div><img src="../assets/images/pro3/1.jpg" alt=""
+                                    <div><img src="<?=base_url()?>assets/front/images/pro3/1.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="../assets/images/pro3/2.jpg" alt=""
+                                    <div><img src="<?=base_url()?>assets/front/images/pro3/2.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="../assets/images/pro3/27.jpg" alt=""
+                                    <div><img src="<?=base_url()?>assets/front/images/pro3/27.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="../assets/images/pro3/27.jpg" alt=""
+                                    <div><img src="<?=base_url()?>assets/front/images/pro3/27.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
                                 </div>
                             </div>
@@ -59,12 +59,12 @@
                             <div class="product-count">
                                 <ul>
                                     <li>
-                                        <img src="../assets/images/fire.gif" class="img-fluid" alt="image">
+                                        <img src="<?=base_url()?>assets/front/images/fire.gif" class="img-fluid" alt="image">
                                         <span class="p-counter">37</span>
                                         <span class="lang">orders in last 24 hours</span>
                                     </li>
                                     <li>
-                                        <img src="../assets/images/person.gif" class="img-fluid user_img" alt="image">
+                                        <img src="<?=base_url()?>assets/front/images/person.gif" class="img-fluid user_img" alt="image">
                                         <span class="p-counter">44</span>
                                         <span class="lang">active view this</span>
                                     </li>
@@ -82,11 +82,20 @@
                                 <span class="label-text">in fashion</span>
                             </div>
                             <h3 class="price-detail"><?php echo $product->price ;?><del><?php echo $product->old_price ;?></del><span>55% off</span></h3>
-                            <ul class="color-variant">
-                            <?php foreach($colors as $color):?>
-                                <li class="bg-light0 " style="background-color:<?php echo $colors['product_stock_color']?>"></li>
-                                
-                                <?php endforeach;?>
+                            <ul class="color-variant product_color_list">
+                            <?php
+                                if(!empty($colors))
+                                { 
+                                    foreach($colors as $color):?>
+                                        <li class="bg-light0 " style="background-color:<?php echo $color['product_stock_color']?>"></li>                                
+                            <?php endforeach;
+                                }
+                                else
+                                {?>
+                                    <li class="bg-light0 " style="background-color:<?php echo $product->product_color;?>"></li>
+                                <?php 
+                                }
+                                    ?>
                             </ul>
                             <div id="selectSize" class="addeffect-section product-description border-product">
                                 <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal"
@@ -102,14 +111,14 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
-                                            <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt=""
+                                            <div class="modal-body"><img src="<?=base_url()?>assets/front/images/size-chart.jpg" alt=""
                                                     class="img-fluid blur-up lazyload"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <h6 class="error-message">please select size</h6>
                                 <div class="size-box">
-                                    <ul>
+                                    <ul <?php if(empty($sizes)){echo 'class="empty_size"';}?> >
                                     <?php foreach($sizes as $size):?>
                                         <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
                                         <!-- <li><a href="javascript:void(0)">m</a></li>
@@ -123,21 +132,22 @@
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
                                                     class="ti-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number" value="1">
+                                        <input type="text" name="quantity" class="form-control input-number product_quantity" value="1">
                                         <span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-right-plus" data-type="plus" data-field=""><i
                                                     class="ti-angle-right"></i></button></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
-                                    class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1"
-                                        aria-hidden="true"></i> add to cart</a> <a href="#" class="btn btn-solid"><i
-                                        class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a></div>
+                            <div class="product-buttons">
+                                <a href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation add_cart_pro_page" data-productid="<?php echo $product->id ;?>" data-productname="<?php echo $product->name ;?>" data-productprice="<?php echo $product->price ;?>" data-productimage="<?php echo $product->image ;?>">
+                                    <i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> add to cart</a> 
+                                <a href="#" class="btn btn-solid"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a>
+                            </div>
                             <div class="product-count">
                                 <ul>
                                     <li>
-                                        <img src="../assets/images/icon/truck.png" class="img-fluid" alt="image">
+                                        <img src="<?=base_url()?>assets/front/images/icon/truck.png" class="img-fluid" alt="image">
                                         <span class="lang">Free shipping for orders above $500 USD</span>
                                     </li>
                                 </ul>
@@ -171,7 +181,7 @@
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">100% secure payment</h6>
-                                <img src="../assets/images/payment.png" class="img-fluid mt-1" alt="">
+                                <img src="<?=base_url()?>assets/front/images/payment.png" class="img-fluid mt-1" alt="">
                             </div>
                         </div>
                     </div>
@@ -544,4 +554,9 @@
     </section>
     <!-- product section end -->
 
-
+    <!-- added to cart notification -->
+    <div class="added-notification">
+        <img src="<?=base_url()?>assets/front/images/fashion/pro/1.jpg" class="img-fluid" alt="">
+        <h3>added to cart</h3>
+    </div>
+    <!-- added to cart notification -->

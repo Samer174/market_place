@@ -87,7 +87,7 @@
 
     <!-- Paragraph-->
     <div class="title1 section-t-space">
-        <h4><?php echo $this->lang->line('special_offer'); ?> hamid</h4>
+        <h4><?php echo $this->lang->line('special_offer'); ?></h4>
         <h2 class="title-inner1"><?php echo $this->lang->line('latest_drops'); ?></h2>
     </div>
     <div class="container">
@@ -112,7 +112,7 @@
                         <div class="product-box">
                             <div class="img-wrapper">
                                 <div class="front">
-                                    <a  href="product).html"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>"
+                                    <a  href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="back">
@@ -120,7 +120,7 @@
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
-                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
+                                    <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" class="add_cart" data-productid="<?php echo $item['id'];?>" data-productname="<?php echo $item['name'];?>" data-productprice="<?php echo $item['price'];?>" data-productimage="<?php echo $item['image'];?>">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
                                     <a href="javascript:void(0)" title="Add to Wishlist">
@@ -138,7 +138,7 @@
                                 <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                         class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                 </div>
-                                <a href="product-page(no-sidebar).html">
+                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>">
                                     <h6><?php echo $item['name'] ;?></h6>
                                 </a>
                                 <h4><?php echo $item['price'] ;?></h4>
@@ -229,21 +229,21 @@
                                                             echo '<div class="product-box">
                                                                     <div class="img-wrapper">
                                                                         <div class="front">
-                                                                            <a href="product-page(no-sidebar).html"><img
+                                                                            <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'"><img
                                                                                     src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                         </div>
                                                                         <div class="back">
                                                                             <div style="background-color: #fff;">
-                                                                                <a href="product-page(no-sidebar).html" style="opacity: 0.4;"><img
+                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'" style="opacity: 0.4;"><img
                                                                                         src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                             </div>
                                                                         </div>
                                                                         <div class="cart-info cart-wrap">
-                                                                            <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                                                title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                                                href="javascript:void(0)" title="Add to Wishlist"><i
+                                                                            <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" class="add_cart" data-productid="'.$product['id'].'" data-productname="'.$product['name'].'" data-productprice="'.$product['price'].'" data-productimage="'.$product['image'].'">
+                                                                                <i class="ti-shopping-cart"></i></button> 
+                                                                                <a href="javascript:void(0)" title="Add to Wishlist"><i
                                                                                     class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                                                                 data-bs-toggle="modal" data-bs-target="#quick-view"
                                                                                 title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
@@ -255,7 +255,7 @@
                                                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                                                 class="fa fa-star"></i></div>
-                                                                        <a href="product-page(no-sidebar).html">
+                                                                        <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'">
                                                                             <h6>'.$product["name"].'</h6>
                                                                         </a>
                                                                         <h4>$50.00</h4>
@@ -743,5 +743,5 @@
 
 
 
-    <?php $this->load->view('front/footer');?>
+    
 
