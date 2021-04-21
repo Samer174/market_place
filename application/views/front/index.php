@@ -123,7 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="#"  onclick="Add_wishlist()" title="Add to my fav">
+                                    <a href="#"  onclick="Add_wishlist('<?php echo $item['id'];?>')" title="Add to my fav">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -771,8 +771,8 @@ echo $lwish['name']; */
                         <section class="wishlist-section section-b-space ">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-12 table-responsive-xs"> <?php foreach( $lwish as $it):?> 
-                                        <table class="table cart-table" id = "wishtable">
+                                    <div class="col-sm-12 table-responsive-xs">
+                                        <table class="table cart-table" >
                                             <thead>
                                                 <tr class="table-head">
                                                     
@@ -783,21 +783,13 @@ echo $lwish['name']; */
                                                 </tr>
                                             </thead>
                                              
-                                            <tbody id= "hidden" >
+                                            <tbody  id = "wishtable" >
                                            
                                                 
                                                 <tr>
                                                 
-                                                <td>
-                                                <a href="#"><?php echo $it['name'] ;?></a>
-                                                    
-                                                    </td>
-                                                        <td>
-                                                            <h2>$<?php echo $it['price'] ;?></h2>
-                                                        </td>
-                                                        <td>
-                                                            <p><?php echo $it['status'] ;?></p>
-                                                        </td>
+                                               
+                                                        
                                                         <td><a href="#" onclick = "deleteItem()" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
                                                                 class="cart"><i class="ti-shopping-cart"></i></a></td>
                                                                             
@@ -808,7 +800,7 @@ echo $lwish['name']; */
                                             </tbody>
                                             
                                             
-                                        </table> <?php endforeach;?>
+                                        </table> 
                                     </div>
                                 </div>
                                 <div class="row wishlist-buttons">
@@ -878,17 +870,17 @@ echo $lwish['name']; */
 //     }   
    
 
-   function Add_wishlist()
+   function Add_wishlist($id)
    {
     $.ajax(
         {
            type:'POST',
            url:'<?php echo base_url(); ?>/front_end/Product/Add_wish',
-          
+          data:{id:$id}
            success : function(data)
            { 
-                    console.log(data(0=>('name')));
-                // $('#wishtable').html(data)
+                    console.log(data);
+                $('#wishtable').html(data);
               
                
            }

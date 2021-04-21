@@ -61,25 +61,40 @@ class Product extends CI_Controller
 
     public function Add_wish()
     {
-     $id = $this->session->userdata('user_id');
+     $user_id = $this->session->userdata('user_id');
      
      
          
       if( $this->session->userdata('loggedIn_front') ==true )
       {
         $wish = $this->Product_Model->get_wish($id);
-        echo json_encode($wish);
-        // $i=1;
-				// foreach($wish as $row)
-				// {
-				// 	  echo "<tr>";
-				// 	  echo "<td>".$i."</td>";
-				// 	  echo "<td>".$row['name']."</td>";
-				// 	  echo "<td>".$row['price']."</td>";
-				// 	  echo "<td>".$row['status']."</td>";
-				// 	  echo "</tr>";
-				// 	  $i++;
-				// }
+        
+        
+         $user_id =  $this->input->post('user_id');
+         $id =  $this->input->post('product_id');
+         $wishlist = array(
+           
+           'user_id'=>$user_id,
+           'product_id'=>$product_id,
+           
+         );
+         echo 
+
+
+        $add = $this->db->insert('user_favorite',$wishlist);
+        // echo json_encode($wish);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+					  
+					  echo "<td>".$row['name']."</td>";
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            
+					  echo "</tr>";
+					  $i++;
+				}
       }
      
     }
