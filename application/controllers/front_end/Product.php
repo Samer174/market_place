@@ -32,33 +32,90 @@ class Product extends CI_Controller
       $this->load->view('front/footer');
     }
 
-    public function wishlist()
-    {
-     $id =  $this->input->post('id');
-     $name =  $this->input->post('name');
-     $price =  $this->input->post('price');
-     $status =  $this->input->post('status');
-     $wishlist = array(0=> array(
-       'id'=>$id,
-       'name'=>$name,
-       'price'=>$price,
-       'status'=>$status
-     ));
+    // public function wishlist()
+    // {
+    //  $id =  $this->input->post('id');
+    //  $name =  $this->input->post('name');
+    //  $price =  $this->input->post('price');
+    //  $status =  $this->input->post('status');
+    //  $wishlist = array(0=> array(
+    //    'id'=>$id,
+    //    'name'=>$name,
+    //    'price'=>$price,
+    //    'status'=>$status
+    //  ));
      
 
-      $this->session->set_userdata('product_id',$wishlist);
+    //   $this->session->set_userdata('product_id',$wishlist);
       
          
       
       
-    }
+    // }
 
-    public function destroy(){
-      $this->session->sess_destroy();
-    }
-
+    // public function destroy(){
+    //   $this->session->sess_destroy();
+    // }
 
     
+
+    public function Add_wish()
+    {
+     
+     
+     
+         
+      // if( $this->session->userdata('loggedIn_front') ==true )
+      // {
+       $id = $this->session->userdata('user_id');
+       
+        
+      $pid = $this->input->post('pid');
+         
+        //  $id = $this->input->post('id');
+         $wishlist = array(
+           
+           'user_id'=>$id,
+           'product_id'=>$pid,
+           
+         );
+        
+
+
+       $this->db->insert('user_favorite',$wishlist);
+        // echo json_encode($wish);
+        $wish = $this->Product_Model->get_wish($id);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+					  
+					  echo "<td>".$row['name']."</td>";
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            
+					  echo "</tr>";
+					  $i++;
+				}
+     
+      }
+      public function show_fav()
+      {
+        $id = $this->session->userdata('user_id');
+        $wish = $this->Product_Model->get_wish($id);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+					  
+					  echo "<td>".$row['name']."</td>";
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            
+					  echo "</tr>";
+					  $i++;
+				}
+      }
 
 
    

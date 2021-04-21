@@ -64,6 +64,7 @@ class Product_Model extends CI_Model
             $q= $this->db->get();
             return $q->result_array();
             
+            
     }
 
     public function get_latest_products()
@@ -76,6 +77,19 @@ class Product_Model extends CI_Model
        $result = $q->result_array();
        return $result;
        
+    }
+
+    public function get_wish($id)
+    {
+    
+        $this->db->select('user_favorite.user_id,user_favorite.product_id,product.id,product.name,product.price,product.status');              
+        $this->db->from('product,user_favorite');
+        $this->db->where('user_favorite.product_id=product.id');
+        $this->db->where('user_favorite.user_id',$id);
+        $q= $this->db->get();
+        return $q->result_array();
+       
+        
     }
 
     
