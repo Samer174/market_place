@@ -123,7 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="#"  onclick="addWish('<?php echo $item['id'];?>','<?php echo $item['name'];?>','<?php echo $item['price'];?>','<?php echo $item['status'];?>')" title="Add to my fav">
+                                    <a href="#"  onclick="Add_wishlist()" title="Add to my fav">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -771,8 +771,8 @@ echo $lwish['name']; */
                         <section class="wishlist-section section-b-space ">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-12 table-responsive-xs">
-                                        <table class="table cart-table">
+                                    <div class="col-sm-12 table-responsive-xs"> <?php foreach( $lwish as $it):?> 
+                                        <table class="table cart-table" id = "wishtable">
                                             <thead>
                                                 <tr class="table-head">
                                                     
@@ -782,41 +782,33 @@ echo $lwish['name']; */
                                                     <th scope="col">action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                             <?php foreach( $lwish as $it):?> 
-                                                <div id="wishtable">
+                                             
+                                            <tbody id= "hidden" >
+                                           
+                                                
                                                 <tr>
                                                 
-                                                <td><a href="#"><?php echo $it['name'] ;?></a>
-                                                    <div class="mobile-cart-content row">
-                                                        <div class="col">
-                                                            <p></p>
-                                                        </div>
-                                                        <div class="col">
-                                                            <h2 class="td-color"></h2>
-                                                        </div>
-                                                        <div class="col">
-                                                            <h2 class="td-color"><a href="#" class="icon me-1"><i class="ti-close"></i>
-                                                                </a><a href="#" class="cart"><i class="ti-shopping-cart"></i></a></h2>
-                                                        </div>
-                                                    </div>
+                                                <td>
+                                                <a href="#"><?php echo $it['name'] ;?></a>
+                                                    
+                                                    </td>
                                                         <td>
                                                             <h2>$<?php echo $it['price'] ;?></h2>
                                                         </td>
                                                         <td>
                                                             <p><?php echo $it['status'] ;?></p>
                                                         </td>
-                                                        <td><a href="#" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                                        <td><a href="#" onclick = "deleteItem()" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
                                                                 class="cart"><i class="ti-shopping-cart"></i></a></td>
-                                                                            </td>
+                                                                            
                                            
                                             </tr> 
-                                                </div>
-                                             <?php endforeach;?>
-                                            </tbody>
-                                           
                                             
-                                        </table>
+                                           
+                                            </tbody>
+                                            
+                                            
+                                        </table> <?php endforeach;?>
                                     </div>
                                 </div>
                                 <div class="row wishlist-buttons">
@@ -852,32 +844,64 @@ echo $lwish['name']; */
 
 
    <script>
-   function addWish($id,$name,$price,$status)
+//    function addWish($id,$name,$price,$status)
+//    {
+//        /* console.log($price); */
+//     $.ajax(
+//         {
+//            type:'POST',
+//            url:'front_end/Product/wishlist',
+//            data:{id:$id,
+//            name :$name,
+//            price:$price,
+//            status:$status},
+//            success : function(data)
+//            { 
+
+//                 $('#wishtable').load('front/index' + ' #wishtable');
+              
+               
+//            }
+
+//        }).done(function(){
+//            alert($id);
+//        });
+
+      
+//    }
+
+//    function deleteItem()
+
+//     {
+//         $('#hidden').hide()
+      
+//     }   
+   
+
+   function Add_wishlist()
    {
-       /* console.log($price); */
     $.ajax(
         {
            type:'POST',
-           url:'front_end/Product/wishlist',
-           data:{id:$id,
-           name :$name,
-           price:$price,
-           status:$status},
-           success : function()
-           {
-                $('#wishtable').load('front',function()
-                {
-                    alert('load happened');
-                });
+           url:'<?php echo base_url(); ?>/front_end/Product/Add_wish',
+          
+           success : function(data)
+           { 
+                    console.log(data(0=>('name')));
+                // $('#wishtable').html(data)
+              
+               
            }
 
        }).done(function(){
-           alert($id);
+           alert('ajax works');
        });
 
-      
    }
-   
-   
+
+
+
+
+
    </script>
     

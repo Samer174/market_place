@@ -31,14 +31,15 @@ class Login extends CI_Controller {
             
             $user_email = $this->input->post('user_email');
             $password = $this->input->post('user_password');
-            
+           
 
-            $result = $this->login->checkLogin($user_email, $password);
-
+             $result = $this->login->checkLogin($user_email, $password);
+               
             if(count($result)>0)
             {
-                $this->session->set_userdata('name', $data[0]['name']);
-                $this->session->set_userdata('email', $data[0]['email']);
+                $this->session->set_userdata('user_id',  $result[0]['u_id']);
+                $this->session->set_userdata('name',  $result[0]['name']);
+                $this->session->set_userdata('email',  $result[0]['email']);
                 $this->session->set_userdata('loggedIn_front', TRUE);
                 redirect('Front');
             }
