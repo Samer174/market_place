@@ -123,11 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-<<<<<<< HEAD
-                                    <a href="javascript:void(0)" onclick="creatStorage('<?php echo $item['id'];?>','<?php echo $item['name'];?>','<?php echo $item['price'];?>','<?php echo $item['status'];?>')" title="Add to Wishlist">
-=======
                                     <a href="#"  onclick="addWish('<?php echo $item['id'];?>','<?php echo $item['name'];?>','<?php echo $item['price'];?>','<?php echo $item['status'];?>')" title="Add to my fav">
->>>>>>> 3e47262f67d6e25b79a891c81044435cecdf4c30
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -744,11 +740,11 @@
 /* echo $this->session->userdata('product_id')['name']; */
 if(!empty($lwish))
 {
-
-
-foreach($lwish as $item){
-    echo $item['name'];
-}}
+    foreach($lwish as $item)
+    {
+        echo $item['name'];
+    }
+}
 /* for($i=0;$i<count($lwish);$i++){
     echo $lwish[$i];
 }
@@ -853,55 +849,31 @@ echo $lwish['name']; */
         </a>
     </div>
     <!-- cart end -->
-    <script>
-   function creatStorage (id,name,price,stat){
-    for (i = 0; i < 5; i++) {
-        sessionStorage.setItem('wishID',id);
-       sessionStorage.setItem('wishname',name);
-       sessionStorage.setItem('wishprice',price);
-       sessionStorage.setItem('wishstat',stat);
-      
-       return false;
-  
-}
-       
     
-    }
-
-    function wish(){
-        let wishid = sessionStorage.getItem('wishID');
-        console.log(wishid);
-    }
-     wish();
-    </script>
 
 
    <script>
    function addWish($id,$name,$price,$status)
    {
        /* console.log($price); */
-    $.ajax(
+     $.ajax(
         {
            type:'POST',
            url:'front_end/Product/wishlist',
-           data:{id:$id,
+           data:{
+            id:$id,
            name :$name,
            price:$price,
            status:$status},
-           success : function()
+           success:function(data)
            {
-                $('#wishtable').load('front',function()
-                {
-                    alert('load happened');
-                });
+               $('#wishtable').html(data)
            }
-
-       }).done(function(){
-           alert($id);
-       });
+            
 
       
-   }
+        });
+    }   
    
    
    </script>
