@@ -805,7 +805,7 @@
                                     </div>
                                 </div>
                                 <div class="row wishlist-buttons">
-                                    <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> </div>
+                                    <div class="col-12"><a href="#" data-bs-dismiss="modal" class="btn btn-solid">continue shopping</a> </div>
                                 </div>
                             </div>
                             
@@ -919,57 +919,52 @@
 
    function Add_wishlist($id)
    {
-    $.ajax(
+     $.ajax(
         {
            type:'POST',
            url:'<?php echo base_url();?>/front_end/Product/Add_wish',
-          data:{pid:$id
-                },
+          data:{pid:$id},
            success : function(data)
            { 
-                    console.log(data);
+                    // console.log(data);
                 $('#wishtable').html(data);
               
                
-           }
+            }
 
-       }).done(function(){
-           alert('ajax works');
-       });
+        } );
 
-   }
+    }
 
 
 
 
    function show_wish()
    {
-    $.ajax(
+      $.ajax(
         {
            type:'POST',
            url:'<?php echo base_url();?>/front_end/Product/show_fav',
          
            success : function(data)
            { 
-                    console.log(data);
+                    // console.log(data);
                 $('#wishtable').html(data);
               
                
-           }
+            }
 
-       }).done(function(){
-           alert('showing fav');
-       });
+        } );
 
-   }
+    }
 
 
 function deleteItem($id)
-{
-    console.log($id);
+ {
+    // console.log($id);
 
 
-    $.ajax(
+     $.ajax(
         {
            type:'POST',
            url:'<?php echo base_url();?>/front_end/Product/delete_wish',
@@ -977,17 +972,15 @@ function deleteItem($id)
                 },
            success : function(data)
            { 
-                    console.log(data);
+                    // console.log(data);
                     $('#wishtable').html(data);
                     // $('#wishtable').load('front/index' + ' #wishtable');
               
                
-           }
+            }
 
-       }).done(function(){
-           alert('item deleted');
-       });
-}
+        });
+  }
 
 
    </script>
