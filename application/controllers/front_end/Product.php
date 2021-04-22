@@ -107,8 +107,23 @@ class Product extends CI_Controller
 				foreach($wish as $row)
 				{
 					  echo "<tr>";
-					  
-					  echo "<td>".$row['name']."</td>";
+            if($this->session->userdata('site_lang') == "english")
+            {
+              echo "<td>".$row['name']."</td>";
+            }
+            else
+            {
+              if(empty($row['name_ar']))
+              {
+                echo "<td>".$row['name']."</td>";
+              }
+              else
+              {
+                 echo "<td>".$row['name_ar']."</td>";
+              }
+             
+            }
+					 
 					  echo "<td>".$row['price']."</td>";
 					  echo "<td>".$row['status']."</td>";
             echo "<td><a href='#' onclick = 'deleteItem(".$row['id'].")' class='icon me-3'><i class='ti-close'></i></a></td>";

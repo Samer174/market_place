@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>collection</h2>
+                        <h2><?php echo $this->lang->line('our_collection');?></h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">collection</li>
+                            <li class="breadcrumb-item"><a href="index.html"><?php echo $this->lang->line('home');?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $this->lang->line('our_collection');?></li>
                         </ol>
                     </nav>
                 </div>
@@ -37,7 +37,7 @@
                                         <a href="#"><img src="../assets/images/mega-menu/2.jpg"
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
-                                            <h4>BIGGEST DEALS ON TOP BRANDS</h4>
+                                            <h4><?php echo $this->lang->line('top_deals');?></h4>
                                             <p>The trick to choosing the best wear for yourself is to keep in mind your
                                                 body type, individual style, occasion and also the time of day or
                                                 weather.

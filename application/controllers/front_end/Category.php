@@ -12,12 +12,12 @@ class Category extends CI_Controller
 
     public function index()
     {
-        $categories = $this->Category_model->get_categories();
+        $categories = $this->Category_Model->get_categories();
         $count = 0;
         $product_count = array();
          foreach ($categories as $cat) {
              
-            $p_count = $this->Category_model->get_product_count($cat["id"]);
+            $p_count = $this->Category_Model->get_product_count($cat["id"]);
             $product_count[$count] = array('cat_id'=>$cat["id"],'count'=>$p_count);
             $count++;
          }
@@ -29,7 +29,7 @@ class Category extends CI_Controller
 
     public function single_Cat($id=null)
     {
-        $data["category"] = $this->Category_model->get_single_cat($id);
+        $data["category"] = $this->Category_Model->get_single_cat($id);
         $this->load->view("front/single_category",$data);
     }
        

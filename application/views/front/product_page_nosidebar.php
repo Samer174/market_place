@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>product</h2>
+                        <h2><?php echo $this->lang->line('products');?></h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">product</li>
+                            <li class="breadcrumb-item"><a href="index.html"><?php echo $this->lang->line('home');?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $this->lang->line('products');?></li>
                         </ol>
                     </nav>
                 </div>
@@ -42,15 +42,17 @@
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
-                                    <div><img src="../assets/images/pro3/1.jpg" alt=""
+                               
+                                    <div><img src="<?php echo base_url('uploads/product/'.$product->image);?>" alt=""
                                             class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="../assets/images/pro3/2.jpg" alt=""
+                                    <!-- <div><img src="../assets/images/pro3/2.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
                                     <div><img src="../assets/images/pro3/27.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
                                     <div><img src="../assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
+                                            class="img-fluid blur-up lazyload"></div> -->
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -70,7 +72,23 @@
                                     </li>
                                 </ul>
                             </div>
-                            <h2><?php echo $product->name ;?></h2>
+                            <h2><?php if($this->session->userdata('site_lang') == "english")
+                                            {
+                                              echo $product->name;
+                                            }
+                                            else
+                                            {
+                                            if(empty($product->name_ar))
+                                            {
+                                                 echo $product->name;
+                                            }
+                                            else
+                                            {
+                                                echo $product->name_ar;
+                                            }
+                                            
+                                            }
+                            ;?></h2>
                             <div class="rating-section">
                                 <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                         class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
@@ -89,7 +107,7 @@
                                 <?php endforeach;?>
                             </ul>
                             <div id="selectSize" class="addeffect-section product-description border-product">
-                                <h6 class="product-title size-text">select size <span><a href="" data-bs-toggle="modal"
+                                <h6 class="product-title size-text"><?php echo $this->lang->line('select_product_size')?><span><a href="" data-bs-toggle="modal"
                                             data-bs-target="#sizemodal">size
                                             chart</a></span></h6>
                                 <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog"
@@ -118,7 +136,7 @@
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
-                                <h6 class="product-title">quantity</h6>
+                                <h6 class="product-title"><?php echo $this->lang->line('select_product_quantity');?></h6>
                                 <div class="qty-box">
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
@@ -132,8 +150,8 @@
                             </div>
                             <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
                                     class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1"
-                                        aria-hidden="true"></i> add to cart</a> <a href="javascript:void(0)" onclick="Add_wishlist('<?php echo $product->id;?>')" class="btn btn-solid"><i
-                                        class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a></div>
+                                        aria-hidden="true"></i> <?php echo $this->lang->line('add_to_cart');?></a> <a href="javascript:void(0)" onclick="Add_wishlist('<?php echo $product->id;?>')" class="btn btn-solid"><i
+                                        class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i><?php echo $this->lang->line('add_to_wishlist');?></a></div>
                             <div class="product-count">
                                 <ul>
                                     <li>
@@ -149,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="border-product">
-                                <h6 class="product-title">shipping info</h6>
+                                <h6 class="product-title"><?php echo $this->lang->line('shipping_info');?></h6>
                                 <ul class="shipping-info">
                                     <li>100% Original Products</li>
                                     <li>Free Delivery on order above Rs. 799</li>
@@ -224,7 +242,7 @@
                                 </div>
                                 <div class="part">
                                     <h5 class="inner-title">size & fit:</h5>
-                                    <p>The model (height 5'8") is wearing a size S</p>
+                                    <p>The model (height 5'8") is wearing a size M</p>
                                 </div>
                                 <div class="part">
                                     <h5 class="inner-title">Material & Care:</h5>

@@ -777,10 +777,10 @@
                                             <thead>
                                                 <tr class="table-head">
                                                     
-                                                    <th scope="col">product name</th>
-                                                    <th scope="col">price</th>
-                                                    <th scope="col">availability</th>
-                                                    <th scope="col">action</th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_name_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_price_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_availability_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_action_modal');?></th>
                                                 </tr>
                                             </thead>
                                              
@@ -805,7 +805,7 @@
                                     </div>
                                 </div>
                                 <div class="row wishlist-buttons">
-                                    <div class="col-12"><a href="#" data-bs-dismiss="modal" class="btn btn-solid">continue shopping</a> </div>
+                                    <div class="col-12"><a href="#" data-bs-dismiss="modal" class="btn btn-solid"><?php echo $this->lang->line('continue_shopping_modal');?></a> </div>
                                 </div>
                             </div>
                             
