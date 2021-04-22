@@ -93,7 +93,7 @@ class Product extends CI_Controller
 					  echo "<td>".$row['name']."</td>";
 					  echo "<td>".$row['price']."</td>";
 					  echo "<td>".$row['status']."</td>";
-            
+           
 					  echo "</tr>";
 					  $i++;
 				}
@@ -111,7 +111,7 @@ class Product extends CI_Controller
 					  echo "<td>".$row['name']."</td>";
 					  echo "<td>".$row['price']."</td>";
 					  echo "<td>".$row['status']."</td>";
-            
+            echo "<td><a href='#' onclick = 'deleteItem(".$row['id'].")' class='icon me-3'><i class='ti-close'></i></a></td>";
 					  echo "</tr>";
 					  $i++;
 				}
@@ -119,6 +119,33 @@ class Product extends CI_Controller
 
 
    
+      public function delete_wish()
+      {
+        $product_id = $this->input->post('pro_id');
+        $this->db->where('product_id',$product_id);
+        $this->db->delete('user_favorite');
+
+
+        
+        $id = $this->session->userdata('user_id');
+        $wish = $this->Product_Model->get_wish($id);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+					  
+					  echo "<td>".$row['name']."</td>";
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            echo "<td><a href='#' onclick = 'deleteItem(".$row['id'].")' class='icon me-3'><i class='ti-close'></i></a></td>";
+					  echo "</tr>";
+					  $i++;
+        }
+      }
+
+
+
+
     
         
 }

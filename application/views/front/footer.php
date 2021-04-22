@@ -757,6 +757,84 @@
     <!-- theme setting -->
 
 
+
+
+<!-- wishlist modal starts-->
+    
+<div class="modal fade bd-example-modal-lg theme-modal " id="wishlist" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal ">
+                <div class="modal-body ">
+                 
+
+                                        <!--section start-->
+                        <section class="wishlist-section section-b-space ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive-xs">
+                                        <table class="table cart-table" >
+                                            <thead>
+                                                <tr class="table-head">
+                                                    
+                                                    <th scope="col">product name</th>
+                                                    <th scope="col">price</th>
+                                                    <th scope="col">availability</th>
+                                                    <th scope="col">action</th>
+                                                </tr>
+                                            </thead>
+                                             
+                                            <tbody  id = "wishtable" >
+                                           
+                                                
+                                                <tr>
+                                                
+                                               
+                                                        
+                                                        <td><a href="#" onclick = "deleteItem()" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                                                class="cart"><i class="ti-shopping-cart"></i></a></td>
+                                                                            
+                                           
+                                            </tr> 
+                                            
+                                           
+                                            </tbody>
+                                            
+                                            
+                                        </table> 
+                                    </div>
+                                </div>
+                                <div class="row wishlist-buttons">
+                                    <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> </div>
+                                </div>
+                            </div>
+                            
+
+                          
+
+                           
+                        </section>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   
+    <!-- wishlist modal ends-->
+
+
+
+
+
+
+
+
+
+
+
     <!-- tap to top start -->
     <div class="tap-top">
         <div><i class="fa fa-angle-double-up"></i></div>
@@ -804,6 +882,119 @@
             document.getElementById("search-overlay").style.display = "none";
         }
     </script>
+ <script>
+//    function addWish($id,$name,$price,$status)
+//    {
+//        /* console.log($price); */
+//     $.ajax(
+//         {
+//            type:'POST',
+//            url:'front_end/Product/wishlist',
+//            data:{id:$id,
+//            name :$name,
+//            price:$price,
+//            status:$status},
+//            success : function(data)
+//            { 
+
+//                 $('#wishtable').load('front/index' + ' #wishtable');
+              
+               
+//            }
+
+//        }).done(function(){
+//            alert($id);
+//        });
+
+      
+//    }
+
+//    function deleteItem()
+
+//     {
+//         $('#hidden').hide()
+      
+//     }   
+   
+
+   function Add_wishlist($id)
+   {
+    $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/Add_wish',
+          data:{pid:$id
+                },
+           success : function(data)
+           { 
+                    console.log(data);
+                $('#wishtable').html(data);
+              
+               
+           }
+
+       }).done(function(){
+           alert('ajax works');
+       });
+
+   }
+
+
+
+
+   function show_wish()
+   {
+    $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/show_fav',
+         
+           success : function(data)
+           { 
+                    console.log(data);
+                $('#wishtable').html(data);
+              
+               
+           }
+
+       }).done(function(){
+           alert('showing fav');
+       });
+
+   }
+
+
+function deleteItem($id)
+{
+    console.log($id);
+
+
+    $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/delete_wish',
+          data:{pro_id:$id
+                },
+           success : function(data)
+           { 
+                    console.log(data);
+                    $('#wishtable').html(data);
+                    // $('#wishtable').load('front/index' + ' #wishtable');
+              
+               
+           }
+
+       }).done(function(){
+           alert('item deleted');
+       });
+}
+
+
+   </script>
+
+
+
+
 </body>
 
 </html>

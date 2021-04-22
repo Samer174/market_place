@@ -123,7 +123,7 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="#"  onclick="Add_wishlist('<?php echo $item['id'];?>')" title="Add to my fav">
+                                    <a href="javascript:void(0)"  onclick="Add_wishlist('<?php echo $item['id'];?>')" title="Add to my fav">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
@@ -235,7 +235,7 @@
                                                                         </div>
                                                                         <div class="back">
                                                                             <div style="background-color: #fff;">
-                                                                                <a href="product-page(no-sidebar).html" style="opacity: 0.4;"><img
+                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$product["id"].'" style="opacity: 0.4;"><img
                                                                                         src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                             </div>
@@ -243,7 +243,7 @@
                                                                         <div class="cart-info cart-wrap">
                                                                             <button data-bs-toggle="modal" data-bs-target="#addtocart"
                                                                                 title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                                                href="javascript:void(0)" title="Add to Wishlist"><i
+                                                                                href="javascript:void(0)" onclick="Add_wishlist('.$product["id"].')"  title="Add to my"><i
                                                                                     class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                                                                 data-bs-toggle="modal" data-bs-target="#quick-view"
                                                                                 title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
@@ -758,71 +758,7 @@ echo $lwish['name']; */
  ?>
 
 
-    <!-- wishlist modal starts-->
     
-    <div class="modal fade bd-example-modal-lg theme-modal " id="wishlist" tabindex="-1" role="dialog"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content quick-view-modal ">
-                <div class="modal-body ">
-                 
-
-                                        <!--section start-->
-                        <section class="wishlist-section section-b-space ">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-12 table-responsive-xs">
-                                        <table class="table cart-table" >
-                                            <thead>
-                                                <tr class="table-head">
-                                                    
-                                                    <th scope="col">product name</th>
-                                                    <th scope="col">price</th>
-                                                    <th scope="col">availability</th>
-                                                    <th scope="col">action</th>
-                                                </tr>
-                                            </thead>
-                                             
-                                            <tbody  id = "wishtable" >
-                                           
-                                                
-                                                <tr>
-                                                
-                                               
-                                                        
-                                                        <td><a href="#" onclick = "deleteItem()" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
-                                                                class="cart"><i class="ti-shopping-cart"></i></a></td>
-                                                                            
-                                           
-                                            </tr> 
-                                            
-                                           
-                                            </tbody>
-                                            
-                                            
-                                        </table> 
-                                    </div>
-                                </div>
-                                <div class="row wishlist-buttons">
-                                    <div class="col-12"><a href="#" class="btn btn-solid">continue shopping</a> </div>
-                                </div>
-                            </div>
-                            
-
-                          
-
-                           
-                        </section>
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-   
-   
-    <!-- wishlist modal ends-->
 
     
 
@@ -836,90 +772,5 @@ echo $lwish['name']; */
     
 
 
-   <script>
-//    function addWish($id,$name,$price,$status)
-//    {
-//        /* console.log($price); */
-//     $.ajax(
-//         {
-//            type:'POST',
-//            url:'front_end/Product/wishlist',
-//            data:{id:$id,
-//            name :$name,
-//            price:$price,
-//            status:$status},
-//            success : function(data)
-//            { 
-
-//                 $('#wishtable').load('front/index' + ' #wishtable');
-              
-               
-//            }
-
-//        }).done(function(){
-//            alert($id);
-//        });
-
-      
-//    }
-
-//    function deleteItem()
-
-//     {
-//         $('#hidden').hide()
-      
-//     }   
-   
-
-   function Add_wishlist($id)
-   {
-    $.ajax(
-        {
-           type:'POST',
-           url:'<?php echo base_url();?>/front_end/Product/Add_wish',
-          data:{pid:$id
-                },
-           success : function(data)
-           { 
-                    console.log(data);
-                $('#wishtable').html(data);
-              
-               
-           }
-
-       }).done(function(){
-           alert('ajax works');
-       });
-
-   }
-
-
-
-
-   function show_wish()
-   {
-    $.ajax(
-        {
-           type:'POST',
-           url:'<?php echo base_url();?>/front_end/Product/show_fav',
-         
-           success : function(data)
-           { 
-                    console.log(data);
-                $('#wishtable').html(data);
-              
-               
-           }
-
-       }).done(function(){
-           alert('showing fav');
-       });
-
-   }
-
-
-
-
-
-   </script>
+  
     

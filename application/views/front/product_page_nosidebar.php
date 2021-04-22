@@ -132,7 +132,7 @@
                             </div>
                             <div class="product-buttons"><a href="javascript:void(0)" id="cartEffect"
                                     class="btn btn-solid hover-solid btn-animation"><i class="fa fa-shopping-cart me-1"
-                                        aria-hidden="true"></i> add to cart</a> <a href="#" class="btn btn-solid"><i
+                                        aria-hidden="true"></i> add to cart</a> <a href="javascript:void(0)" onclick="Add_wishlist('<?php echo $product->id;?>')" class="btn btn-solid"><i
                                         class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>wishlist</a></div>
                             <div class="product-count">
                                 <ul>
