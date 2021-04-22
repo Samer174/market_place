@@ -30,21 +30,21 @@
                         <div class="countdownholder">
                             Your cart will be expired in<span id="timer"></span> minutes!
                         </div>
-                        <a href="checkout.html" class="cart_checkout btn btn-solid btn-xs">check out</a>
+                        <a href="<?=base_url()?>front_end/checkout" class="cart_checkout btn btn-solid btn-xs"><?=$this->lang->line('checkout')?></a>
                     </div>
                 </div>
                 <div class="col-sm-12 table-responsive-xs">
                     <table class="table cart-table">
                         <thead>
                             <tr class="table-head">
-                                <th scope="col">image</th>
-                                <th scope="col">product name</th>
-                                <th scope="col">size</th>
-                                <th scope="col">color</th>
-                                <th scope="col">price</th>
-                                <th scope="col">quantity</th>
-                                <th scope="col">action</th>
-                                <th scope="col">total</th>
+                                <th scope="col"><?=$this->lang->line('cart_product_image')?></th>
+                                <th scope="col"><?=$this->lang->line('cart_product_name')?></th>
+                                <th scope="col"><?=$this->lang->line('cart_product_size')?></th>
+                                <th scope="col"><?=$this->lang->line('cart_product_color')?></th>
+                                <th scope="col"><?=$this->lang->line('cart_product_price')?></th>
+                                <th scope="col"><?=$this->lang->line('cart_product_quantity')?></th>
+                                <th scope="col">Action</th>
+                                <th scope="col"><?=$this->lang->line('cart_product_total')?></th>
                             </tr>
                         </thead>
                         <?php foreach($cart as $items){ ?>
@@ -55,14 +55,22 @@
                                         if ($this->cart->has_options($items['rowid']) == TRUE)
                                         {
                                             echo $this->cart->product_options($items['rowid'])["image"];
-                                        //     foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value)
-                                        //     {
-                                        //         echo $option_value;
-                                        //     }
                                         }
                                     ?>" alt=""></a>
                                 </td>
-                                <td><a href="#"><?php echo $items['name'];?></a>
+                                <td><a href="#"><?php
+                                    if($this->session->userdata('site_lang') == "english")
+                                    {
+                                        echo $items["name"];
+                                    }
+                                    else
+                                    {
+                                        if ($this->cart->has_options($items['rowid']) == TRUE)
+                                        {
+                                            echo $this->cart->product_options($items['rowid'])["name_ar"];
+                                        }
+                                    }
+                                 ?></a>
                                     <div class="mobile-cart-content row">
                                         <div class="col">
                                             <div class="qty-box">
@@ -120,7 +128,7 @@
                         <table class="table cart-table ">
                             <tfoot>
                                 <tr>
-                                    <td>total price :</td>
+                                    <td><?=$this->lang->line('cart_product_total_all')?> :</td>
                                     <td>
                                         <h2>$<?php echo number_format($this->cart->total())?></h2>
                                     </td>
@@ -131,8 +139,8 @@
                 </div>
             </div>
             <div class="row cart-buttons">
-                <div class="col-6"><a href="<?=base_url()?>'front_end/category" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a href="<?=base_url()?>'front_end/checkout" class="btn btn-solid">check out</a></div>
+                <div class="col-6"><a href="<?=base_url()?>front_end/category" class="btn btn-solid"><?=$this->lang->line('continue_shopping')?></a></div>
+                <div class="col-6"><a href="<?=base_url()?>front_end/checkout" class="btn btn-solid"><?=$this->lang->line('checkout')?></a></div>
             </div>
         </div>
     </section>

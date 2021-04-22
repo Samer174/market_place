@@ -139,7 +139,18 @@
                                         class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                 </div>
                                 <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>">
-                                    <h6><?php echo $item['name'] ;?></h6>
+                                    <h6>
+                                        <?php 
+                                        if($this->session->userdata('site_lang') == "english")
+                                        {
+                                            echo $item['name'] ;
+                                        }
+                                        else
+                                        {
+                                            echo $item["name_ar"];
+                                        }
+                                        ?>
+                                    </h6>
                                 </a>
                                 <h4><?php echo $item['price'] ;?></h4>
                                 <ul class="color-variant">
@@ -203,7 +214,7 @@
                                 {
                                     echo $cat["name"];
                                 }
-                                else
+                                else if($this->session->userdata('site_lang') == "arabic")
                                 {
                                     echo $cat["name_ar"];
                                 }
@@ -256,7 +267,16 @@
                                                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                                                 class="fa fa-star"></i></div>
                                                                         <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'">
-                                                                            <h6>'.$product["name"].'</h6>
+                                                                            <h6>';
+                                                                            if($this->session->userdata('site_lang') == "english")
+                                                                                {
+                                                                                    echo $product['name'] ;
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo $product["name_ar"];
+                                                                                }
+                                                                            echo '</h6>
                                                                         </a>
                                                                         <h4>$50.00</h4>
                                                                         <ul class="color-variant">
@@ -363,126 +383,6 @@
     </div>
     <!-- service layout  end -->
 
-
-    <!-- blog section -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="title1 section-t-space">
-                    <h4>From the Blog</h4>
-                    <h2 class="title-inner1">Fashion for you</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="blog pt-0 ratio2_3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="slide-3 no-arrow slick-default-margin">
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="../assets/front/images/blog/1.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2021</h4>
-                                <a href="#">
-                                    <p>Top 10 January Best-Sellers Products – All Under $50!</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="../assets/front/images/blog/2.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>Quarantine Birthday Celebration | In The Times of COVID-19</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="../assets/front/images/blog/3.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>London fashion & Hair Trends From Fashion Week</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="../assets/front/images/blog/4.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>Fun Fashion Clothing and Ideas for Valentine’s Day</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <a href="#">
-                                <div class="classic-effect">
-                                    <div>
-                                        <img src="../assets/front/images/blog/5.jpg" class="img-fluid blur-up lazyload bg-img"
-                                            alt="">
-                                    </div>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <div class="blog-details">
-                                <h4>25 January 2018</h4>
-                                <a href="#">
-                                    <p>Lorem ipsum dolor sit consectetur adipiscing elit,</p>
-                                </a>
-                                <hr class="style1">
-                                <h6>by: John Dio , 2 Comment</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- blog section end -->
-
-
     <!-- instagram section -->
     <section class="instagram ratio_square">
         <div class="container-fluid">
@@ -492,7 +392,7 @@
                     <div class="slide-7 no-arrow slick-instagram">
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/2.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/2.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -500,7 +400,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/3.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/3.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -508,7 +408,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/4.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/4.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -516,7 +416,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/9.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/9.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -524,7 +424,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/6.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/6.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -532,7 +432,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/7.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/7.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -540,7 +440,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/8.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/8.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -548,7 +448,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/9.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/9.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -556,7 +456,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/front/images/slider/2.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="<?=base_url()?>assets/front/images/slider/2.jpg" class="bg-img"
                                         alt="img">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>

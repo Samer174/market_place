@@ -36,7 +36,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/front/css/style.css');?>">
 </head>
-<!-- test -->
+
 <body class="theme-color-1 <?php if($this->session->userdata('site_lang') == "arabic") { echo "rtl"; } ?>">
 
 
@@ -390,7 +390,7 @@
                                                     aria-hidden="true"></i></div>
                                         </li>
                                         <li><a href="<?php echo base_url();?>"><?php echo $this->lang->line('home'); ?></a></li>
-                                        <li class="mega" id="hover-cls">
+                                        <!-- <li class="mega" id="hover-cls">
                                             <a href="#"><?php echo $this->lang->line('features'); ?> <div class="lable-nav">new</div></a>
                                             <ul class="mega-menu full-mega-menu">
                                                 <li>
@@ -549,10 +549,10 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li>
-                                            <a href="#"><?php echo $this->lang->line('shop'); ?></a>
-                                            <ul>
+                                            <a href="<?=base_url()?>front_end/category"><?php echo $this->lang->line('shop'); ?></a>
+                                            <!-- <ul>
                                                 <li><a href="<?php echo base_url('');?>">top filter<span
                                                             class="new-tag">new</span></a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/modern');?>">modern<span
@@ -569,9 +569,9 @@
                                                 <li><a href=<?php echo base_url('front_end/Category/3grid');?>>three grid</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/6grid');?>">six grid</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/list_view');?>">list view</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="#"><?php echo $this->lang->line('products'); ?></a>
                                             <ul>
                                                 <li><a href="<?php echo base_url('front_end/Product/360view');?>">360 view <span
@@ -621,7 +621,7 @@
                                                 <li><a href="<?php echo base_url('front_end/Product/image_swatch');?>">image swatch </a></li>
                                                 <li><a href="<?php echo base_url('front_end/Product/v_tab');?>">vertical tab</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="#"><?php echo $this->lang->line('pages'); ?></a>
                                             <ul>
                                                 <li>
@@ -711,11 +711,11 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <form>
+                                                                    <form action="<?=base_url()?>front_end/search" method="post">
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" name="search" class="form-control"
                                                                                 id="exampleInputPassword1"
-                                                                                placeholder="Search a Product">
+                                                                                placeholder="Search a Product" required>
                                                                         </div>
                                                                         <button type="submit" class="btn btn-primary"><i
                                                                                 class="fa fa-search"></i></button>
@@ -750,7 +750,7 @@
                                             <div><img src="<?php echo base_url('assets/front/images/icon/cart.png');?>"
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-shopping-cart"></i></div>
-                                            <span class="cart_qty_cls">2</span>
+                                            <span class="cart_qty_cls"><?=count($this->cart->contents());?></span>
                                             <ul id="detail_cart_home" class="show-div shopping-cart">
                                                 <!-- <li>
                                                     <div class="media">

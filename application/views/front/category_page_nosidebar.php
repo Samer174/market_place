@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="top-banner-wrapper">
-                                        <a href="#"><img src="../assets/images/mega-menu/2.jpg"
+                                        <a href="#"><img src="<?=base_url()?>assets/front/images/mega-menu/2.jpg"
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
                                             <h4>BIGGEST DEALS ON TOP BRANDS</h4>
@@ -66,13 +66,13 @@
                                                             </div>
                                                             <div class="collection-grid-view">
                                                                 <ul>
-                                                                    <li><img src="../assets/images/icon/2.png" alt=""
+                                                                    <li><img src="<?=base_url()?>assets/front/images/icon/2.png" alt=""
                                                                             class="product-2-layout-view"></li>
-                                                                    <li><img src="../assets/images/icon/3.png" alt=""
+                                                                    <li><img src="<?=base_url()?>assets/front/images/icon/3.png" alt=""
                                                                             class="product-3-layout-view"></li>
-                                                                    <li><img src="../assets/images/icon/4.png" alt=""
+                                                                    <li><img src="<?=base_url()?>assets/front/images/icon/4.png" alt=""
                                                                             class="product-4-layout-view"></li>
-                                                                    <li><img src="../assets/images/icon/6.png" alt=""
+                                                                    <li><img src="<?=base_url()?>assets/front/images/icon/6.png" alt=""
                                                                             class="product-6-layout-view"></li>
                                                                 </ul>
                                                             </div>
@@ -110,7 +110,7 @@
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$product['id']);?>"><img src="../assets/images/pro3/36.jpg"
+                                                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$product['id']);?>"><img src="<?=base_url()?>assets/front/images/pro3/36.jpg"
                                                                         class="img-fluid blur-up lazyload bg-img"
                                                                         alt=""></a>
                                                             </div>
@@ -135,7 +135,16 @@
                                                                         class="fa fa-star"></i> <i
                                                                         class="fa fa-star"></i></div>
                                                                 <a href="product-page(no-sidebar).html">
-                                                                    <h6><?php echo $product['name'];?></h6>
+                                                                    <h6><?php
+                                                                        if($this->session->userdata('site_lang') == "english")
+                                                                        {
+                                                                            echo $product["name"];
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            echo $product["name_ar"];
+                                                                        }
+                                                                     ?></h6>
                                                                 </a>
                                                                 <p>Lorem Ipsum is simply dummy text of the printing and
                                                                     typesetting industry. Lorem Ipsum has been the

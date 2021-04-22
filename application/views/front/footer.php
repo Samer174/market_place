@@ -822,6 +822,8 @@
                     console.log("add to cart success");
                     console.log(data);
                     $('#detail_cart_home').html(data);
+                    var value = parseInt($(".cart_qty_cls").text(), 10) + 1;
+                    $(".cart_qty_cls").text(value);
                 }
             });
         });
@@ -886,6 +888,34 @@
                 }
             });
         });
+    </script>
+    <script>
+    $(function () {
+        $('#form_checkout').submit( function (e) {
+
+          e.preventDefault();
+
+          var $form = $(this),
+          url = $form.attr('action');
+
+          $.ajax({
+            type: 'post',
+            url: url,
+            data: $('#form_checkout').serialize(),
+            success: function (data) {
+                if(data == 'empty_cart')
+                {
+                    alert('please add products to cart first');
+                }    
+                else
+                {
+                    window.location.replace("<?=base_url()?>front_end/checkout/order_success/"+data);
+                }          
+            }
+          });
+
+        });
+    });
     </script>
 </body>
 

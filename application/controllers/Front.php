@@ -17,9 +17,9 @@ class Front extends CI_Controller
         }
         else
         {
+            $this->session->set_userdata('site_lang', 'english');
             $this->lang->load('content', 'english');
         }
-        
         $categories = $this->Category_Model->get_categories();
         $data['categories'] = $categories;     
         $categories_with_preiority = $this->Category_Model->get_categories_with_preiority();
