@@ -44,3 +44,4 @@ $lang['add_to_wishlist'] = "WISHLIST";
 $lang['add_to_cart'] = "ADD TO CART";
 $lang['shipping_info'] = "SHIPPING INFO";
 $lang['top_deals'] = "BIGGEST DEALS ON TOP BRANDS";
+$lang['details'] = "DETAILS";

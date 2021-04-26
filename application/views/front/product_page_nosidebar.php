@@ -208,7 +208,7 @@
                     <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                         <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
                                 href="#top-home" role="tab" aria-selected="true"><i
-                                    class="icofont icofont-ui-home"></i>Details</a>
+                                    class="icofont icofont-ui-home"></i><?php echo $this->lang->line('details');?></a>
                             <div class="material-border"></div>
                         </li>
                         <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"

@@ -44,3 +44,4 @@ $lang['add_to_wishlist'] = "إضافة إلي المفضلة";
 $lang['add_to_cart'] = "إضافة إلي السلة";
 $lang['shipping_info'] = " معلومات الشحن";
 $lang['top_deals'] = "  أفضل العروض";
+$lang['details'] = "التفاصيل";

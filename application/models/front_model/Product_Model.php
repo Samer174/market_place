@@ -92,6 +92,18 @@ class Product_Model extends CI_Model
         
     }
 
+    public function get_sizes_all()
+    {
+            $this->db->select('product_size.product_id,product_size.size_id,size.size_id,size.name');              
+            $this->db->from('product_size,size');
+            $this->db->where('size.size_id=product_size.size_id');
+           
+            $q= $this->db->get();
+            return $q->result_array();
+            
+            
+    }
+
     
 
 }

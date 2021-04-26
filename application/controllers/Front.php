@@ -9,7 +9,7 @@ class Front extends CI_Controller
          $this->load->model('front_model/Product_Model');
     }
 
-    public function index()
+    public function index($id=NULL)
     {
         if($this->session->userdata('site_lang') !== null)
         {
@@ -38,10 +38,20 @@ class Front extends CI_Controller
         $data['latest_products'] = $this->Product_Model->get_latest_products();
         $data['categories_with_preiority'] = $categories_with_preiority;
 
+        // $id = $this->input->post('id');
+        $data['sizes'] = $this->Product_Model->get_sizes_all();
+        
+        
+        
         $this->load->view('front/header', $data);
         $this->load->view('front/index');
         $this->load->view('front/footer');
     }
+    // public function view_modal()
+    // {
+       
+    //     print_r($data);
+    // }
        
         
 }
