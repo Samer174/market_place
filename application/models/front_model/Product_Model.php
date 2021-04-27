@@ -17,8 +17,14 @@ class Product_Model extends CI_Model
 
     public function get_single_product($id)
     {
+        $this->db->select('product.*, brand.brand_id, brand.brand_name, brand.brand_name_ar, tag.tag_id, tag.tag_name, tag.tag_name_ar');
+        $this->db->from('product');
         $this->db->where('id',$id);
         $query = $this->db->get("product")->row();
+        $this->db->join('brand', 'product.product_brand = brand.brand_id');
+        $this->db->join('tag', 'product.product_tag = tag.tag_id');
+        $query = $this->db->get()->row();
+
         return $query;
     }
 
@@ -105,5 +111,16 @@ class Product_Model extends CI_Model
     }
 
     
+
+    public function get_related_products($pro_tag)
+    {
+        $this->db->select('*'); 
+         $this->db->from('product'); 
+        $this->db->where('product_tag',$pro_tag);
+       $q = $this->db->get();
+       $result = $q->result_array();
+       return $result;
+       
+    }
 
 }

@@ -24,7 +24,9 @@ class Category extends CI_Controller
          $data['product_count'] = $product_count;
         //  print_r($product_count);
          $data["categories"] = $categories;
+         $this->load->view('front/header');
          $this->load->view('front/collection', $data);
+         $this->load->view('front/footer');
     }
 
     public function single_Cat($id=null)
@@ -37,9 +39,9 @@ class Category extends CI_Controller
     {
        
         $data['data']= $this->Product_Model->get_cat($id);
-        
-        $this->load->view('front/header');
-        $this->load->view('front/category_page_nosidebar',$data);
+        $data["categories"] = $this->Category_Model->get_categories();
+        $this->load->view('front/header',$data);
+        $this->load->view('front/category_page_nosidebar');
         $this->load->view('front/footer');
 
     }

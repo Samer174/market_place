@@ -159,6 +159,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <textarea class="form-control" id="summernote" name="des" ><?php echo (isset($r_data))?$r_data[0]['description']:''; ?></textarea>
                             </div>
                         </div>
+                        <div class="col-lg-12 col-md-12">
+                            <label for="form_control_pickup_address"> Description Arabic :</label>
+                            <div class="form-group form-md-line-input form-md-floating-label">
+                                <textarea class="form-control" id="summernote2" name="des_ar" ><?php echo (isset($r_data))?$r_data[0]['description_ar']:''; ?></textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
@@ -440,6 +446,21 @@ License: You must have a valid license purchased only from themeforest(the above
     });
     $('#contact').on('submit',function(){
         var abc = $('#summernote').val();
+        if(abc == ''){
+            sweetAlert("Oops...", "Something went wrong!", "error");
+            return false;
+        }
+    });
+    $(document).ready(function() {
+        $('#summernote2').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
+    });
+    $('#contact').on('submit',function(){
+        var abc = $('#summernote2').val();
         if(abc == ''){
             sweetAlert("Oops...", "Something went wrong!", "error");
             return false;

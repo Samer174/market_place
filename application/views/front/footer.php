@@ -1090,6 +1090,119 @@ function deleteItem($id)
 
 
 
+<!-- Cart Script -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.add_cart').click(function(){
+            var product_id    = $(this).data("productid");
+            var product_name  = $(this).data("productname");
+            var product_price = $(this).data("productprice");
+            var product_image = $(this).data("productimage");
+            // var quantity      = $('#' + product_id).val();
+
+            $.ajax({
+                url : "<?php echo site_url('front_end/cart/add_to_cart');?>",
+                method : "POST",
+                data : {product_id: product_id, product_name: product_name, product_price: product_price, product_image: product_image},
+                success: function(data){
+                    console.log("add to cart success");
+                    console.log(data);
+                    $('#detail_cart_home').html(data);
+                    var value = parseInt($(".cart_qty_cls").text(), 10) + 1;
+                    $(".cart_qty_cls").text(value);
+                }
+            });
+        });
+ 
+         
+        $('#detail_cart_home').load("<?php echo site_url('front_end/cart/load_cart');?>");
+ 
+         
+        $(document).on('click','.romove_cart',function(){
+            var row_id=$(this).attr("id"); 
+            $.ajax({
+                url : "<?php echo site_url('front_end/cart/delete_cart');?>",
+                method : "POST",
+                data : {row_id : row_id},
+                success :function(data){
+                    $('#detail_cart').html(data);
+                }
+            });
+        });
+    });
+</script>
+<!-- Cart Script -->
+<script type="text/javascript">
+        $('#cartEffect').on('click', function (e) {
+            var product_id    = $(this).data("productid");
+            var product_name  = $(this).data("productname");
+            var product_price = $(this).data("productprice");
+            var product_image = $(this).data("productimage");
+            var color = null;
+            var size = null;
+            if($(".product_color_list li").hasClass('active'))
+            {
+                color = $( $(".product_color_list .active") ).css( "background-color" );
+            }
+            else
+            {
+                color = $( $(".product_color_list li") ).css( "background-color" );
+            }
+            if($("#selectSize .size-box ul").hasClass('empty_size'))
+            {
+                
+            }
+            else
+            {
+                if($("#selectSize .size-box ul li").hasClass('active'))
+                {
+                    size = $("#selectSize .size-box ul .active").children("a").text();
+                }
+            }
+             var quantity = $('.product_quantity').val();
+            //  console.log(product_name);
+            //  console.log(color);
+            //  console.log(size);
+            $.ajax({
+                url : "<?php echo site_url('front_end/cart/add_to_cart');?>",
+                method : "POST",
+                data : {product_id: product_id, product_name: product_name, product_price: product_price, product_image: product_image, product_color: color, product_size: size,quantity: quantity},
+                success: function(data){
+                    console.log("add to cart success");
+                    console.log(data);
+                    $('#detail_cart_home').html(data);
+                }
+            });
+        });
+    </script>
+    <script>
+    $(function () {
+        $('#form_checkout').submit( function (e) {
+
+          e.preventDefault();
+
+          var $form = $(this),
+          url = $form.attr('action');
+
+          $.ajax({
+            type: 'post',
+            url: url,
+            data: $('#form_checkout').serialize(),
+            success: function (data) {
+                if(data == 'empty_cart')
+                {
+                    alert('please add products to cart first');
+                }    
+                else
+                {
+                    window.location.replace("<?=base_url()?>front_end/checkout/order_success/"+data);
+                }          
+            }
+          });
+
+        });
+    });
+    </script>
 </body>
 
 </html>

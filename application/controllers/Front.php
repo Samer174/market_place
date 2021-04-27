@@ -7,6 +7,7 @@ class Front extends CI_Controller
          $this->load->model('front_model/Front_Model');
          $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/Product_Model');
+         $this->load->model('front_model/Brand_Model');
     }
 
     public function index($id=NULL)
@@ -17,9 +18,9 @@ class Front extends CI_Controller
         }
         else
         {
+            $this->session->set_userdata('site_lang', 'english');
             $this->lang->load('content', 'english');
         }
-        
         $categories = $this->Category_Model->get_categories();
         $data['categories'] = $categories;     
         $categories_with_preiority = $this->Category_Model->get_categories_with_preiority();
@@ -37,6 +38,7 @@ class Front extends CI_Controller
         $data['products'] = $this->Product_Model->get_products();
         $data['latest_products'] = $this->Product_Model->get_latest_products();
         $data['categories_with_preiority'] = $categories_with_preiority;
+        $data['brands'] = $this->Brand_Model->get_brands();
 
         // $id = $this->input->post('id');
         $data['sizes'] = $this->Product_Model->get_sizes_all();

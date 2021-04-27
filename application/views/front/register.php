@@ -9,14 +9,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>create account</h2>
+                        <h2><?php echo $this->lang->line('create_account'); ?></h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">create account</li>
+                            <li class="breadcrumb-item"><a href="index.html"><?php echo $this->lang->line('home'); ?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $this->lang->line('create_account'); ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -55,7 +55,9 @@
                                     <label for="review"><?php echo $this->lang->line('password'); ?></label>
                                     <input type="password" name="user_password" class="form-control" id="review"
                                         placeholder="<?php echo $this->lang->line('password'); ?>" required="">
-                                </div><input type="submit" class="btn btn-solid w-auto" value="<?php echo $this->lang->line('create_account'); ?>">
+                                </div>
+                                <p><?=$this->lang->line('Terms_&_Condistions_msg')?> <a href="<?=base_url()?>front_end/Terms_and_Condistions"><?=$this->lang->line('Terms_&_Condistions')?></a></p>
+                                <input type="submit" class="btn btn-solid w-auto" value="<?php echo $this->lang->line('create_account'); ?>">
                             </div>
                         <?=form_close()?>
                         <!-- </form> -->

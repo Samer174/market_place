@@ -1934,14 +1934,25 @@ $('.size-box ul li').on('click', function (e) {
 });
 
 $('#cartEffect').on('click', function (e) {
-    if ($("#selectSize .size-box ul").hasClass('selected')) {
+    if($("#selectSize .size-box ul").hasClass('empty_size'))
+    {
         $('#cartEffect').text("Added to bag ");
         $('.added-notification').addClass("show");
         setTimeout(function () {
             $('.added-notification').removeClass("show");
         }, 5000);
-    } else {
-        $('#selectSize').addClass('cartMove');
+    }
+    else
+    {
+        if ($("#selectSize .size-box ul").hasClass('selected')) {
+            $('#cartEffect').text("Added to bag ");
+            $('.added-notification').addClass("show");
+            setTimeout(function () {
+                $('.added-notification').removeClass("show");
+            }, 5000);
+        } else {
+            $('#selectSize').addClass('cartMove');
+        }
     }
 });
 

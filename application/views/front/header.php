@@ -36,7 +36,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/front/css/style.css');?>">
 </head>
-<!-- test -->
+
 <body class="theme-color-1 <?php if($this->session->userdata('site_lang') == "arabic") { echo "rtl"; } ?>">
 
 
@@ -398,7 +398,7 @@
                                                     aria-hidden="true"></i></div>
                                         </li>
                                         <li><a href="<?php echo base_url();?>"><?php echo $this->lang->line('home'); ?></a></li>
-                                        <li class="mega" id="hover-cls">
+                                        <!-- <li class="mega" id="hover-cls">
                                             <a href="#"><?php echo $this->lang->line('features'); ?> <div class="lable-nav">new</div></a>
                                             <ul class="mega-menu full-mega-menu">
                                                 <li>
@@ -557,10 +557,10 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li>
-                                            <a href="#"><?php echo $this->lang->line('shop'); ?></a>
-                                            <ul>
+                                            <a href="<?=base_url()?>front_end/category"><?php echo $this->lang->line('shop'); ?></a>
+                                            <!-- <ul>
                                                 <li><a href="<?php echo base_url('');?>">top filter<span
                                                             class="new-tag">new</span></a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/modern');?>">modern<span
@@ -577,9 +577,9 @@
                                                 <li><a href=<?php echo base_url('front_end/Category/3grid');?>>three grid</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/6grid');?>">six grid</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Category/list_view');?>">list view</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="#"><?php echo $this->lang->line('products'); ?></a>
                                             <ul>
                                                 <li><a href="<?php echo base_url('front_end/Product/360view');?>">360 view <span
@@ -629,10 +629,10 @@
                                                 <li><a href="<?php echo base_url('front_end/Product/image_swatch');?>">image swatch </a></li>
                                                 <li><a href="<?php echo base_url('front_end/Product/v_tab');?>">vertical tab</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li><a href="#"><?php echo $this->lang->line('pages'); ?></a>
                                             <ul>
-                                                <li>
+                                                <!-- <li>
                                                     <a href="#">vendor</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('front_end/Vendor/dashboard');?>">vendor dashboard</a>
@@ -649,7 +649,7 @@
                                                         <li><a href="<?php echo base_url('front_end/Account/dashboard');?>">Dashboard</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/');?>">login</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/register');?>">register</a></li>
-                                                        <li><a href="<?php echo base_url('front_end/Account/contact');?>">contact</a></li>
+                                                        <li><a href="<?php echo base_url('front_end/contact_info');?>">contact</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/forget_pwd');?>">forget password</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/profile');?>">profile</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Account/checkout');?>">checkout</a></li>
@@ -681,25 +681,25 @@
                                                             </ul>
                                                         </li>
                                                     </ul>
-                                                </li>
-                                                <li><a href="<?php echo base_url('front_end/About_page');?>">about us</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Review');?>">review</a>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                <li><a href="<?php echo base_url('front_end/About');?>">about us</a></li>
+                                                <li><a href="<?php echo base_url('front_end/contact_info');?>">Contact Info</a></li>
+                                                <!-- <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Review');?>">review</a></li> -->
+                                                <!-- <li>
                                                     <a href="#">compare</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('front_end/Compare');?>">compare</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Compare/compare2');?>">compare-2</a></li>
                                                     </ul>
-                                                </li>
-                                                <li><a href="<?php echo base_url('front_end/Category');?>">collection</a></li>
+                                                </li> -->
+                                                <!-- <li><a href="<?php echo base_url('front_end/Category');?>">collection</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Lookbook');?>">lookbook</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Sitemap');?>">site map</a>
+                                                <li><a href="<?php echo base_url('front_end/Sitemap');?>">site map</a> -->
                                                 </li>
-                                                <li><a href="<?php echo base_url('front_end/404');?>">404</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Coming_soon');?>">coming soon</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Faq');?>">FAQ</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Brands');?>">Brands</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Testimonial');?>">TESTIMONIAL</a></li>
+                                                <li><a href="<?php echo base_url('front_end/FAQ');?>">FAQ</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -719,11 +719,11 @@
                                                         <div class="container">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <form>
+                                                                    <form action="<?=base_url()?>front_end/search" method="post">
                                                                         <div class="form-group">
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" name="search" class="form-control"
                                                                                 id="exampleInputPassword1"
-                                                                                placeholder="Search a Product">
+                                                                                placeholder="Search a Product" required>
                                                                         </div>
                                                                         <button type="submit" class="btn btn-primary"><i
                                                                                 class="fa fa-search"></i></button>
@@ -758,9 +758,9 @@
                                             <div><img src="<?php echo base_url('assets/front/images/icon/cart.png');?>"
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-shopping-cart"></i></div>
-                                            <span class="cart_qty_cls">2</span>
-                                            <ul class="show-div shopping-cart">
-                                                <li>
+                                            <span class="cart_qty_cls"><?=count($this->cart->contents());?></span>
+                                            <ul id="detail_cart_home" class="show-div shopping-cart">
+                                                <!-- <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="me-3"
                                                                 src="<?php echo base_url('/assets/front/images/fashion/product/1.jpg');?>"></a>
@@ -773,58 +773,17 @@
                                                     </div>
                                                     <div class="close-circle"><a href="#"><i class="fa fa-times"
                                                                 aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('assets/front/images/fashion/product/2.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('/assets/front/images/fashion/product/1.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                src="<?php echo base_url('assets/front/images/fashion/product/2.jpg');?>"></a>
-                                                        <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle"><a href="#"><i class="fa fa-times"
-                                                                aria-hidden="true"></i></a></div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                
+                                                <!-- <li>
                                                     <div class="total">
                                                         <h5>subtotal : <span>$299.00</span></h5>
                                                     </div>
-                                                </li>
-                                                <li>
+                                                </li> -->
+                                                <!-- <li>
                                                     <div class="buttons"><a href="<?php echo base_url('front_end/Account/Cart');?>" class="view-cart"><?php echo $this->lang->line('view_cart'); ?></a>
                                                      <a href="#" class="checkout"><?php echo $this->lang->line('checkout'); ?></a></div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </li>
                                     </ul>
