@@ -624,7 +624,7 @@
                                         </li> -->
                                         <li><a href="#"><?php echo $this->lang->line('pages'); ?></a>
                                             <ul>
-                                                <li>
+                                                <!-- <li>
                                                     <a href="#">vendor</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('front_end/Vendor/dashboard');?>">vendor dashboard</a>
@@ -673,25 +673,25 @@
                                                             </ul>
                                                         </li>
                                                     </ul>
-                                                </li>
+                                                </li> -->
                                                 <li><a href="<?php echo base_url('front_end/About');?>">about us</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Review');?>">review</a>
-                                                </li>
-                                                <li>
+                                                <li><a href="<?php echo base_url('front_end/contact_info');?>">Contact Info</a></li>
+                                                <!-- <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Review');?>">review</a></li> -->
+                                                <!-- <li>
                                                     <a href="#">compare</a>
                                                     <ul>
                                                         <li><a href="<?php echo base_url('front_end/Compare');?>">compare</a></li>
                                                         <li><a href="<?php echo base_url('front_end/Compare/compare2');?>">compare-2</a></li>
                                                     </ul>
-                                                </li>
-                                                <li><a href="<?php echo base_url('front_end/Category');?>">collection</a></li>
+                                                </li> -->
+                                                <!-- <li><a href="<?php echo base_url('front_end/Category');?>">collection</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Lookbook');?>">lookbook</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Sitemap');?>">site map</a>
+                                                <li><a href="<?php echo base_url('front_end/Sitemap');?>">site map</a> -->
                                                 </li>
-                                                <li><a href="<?php echo base_url('front_end/404');?>">404</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Coming_soon');?>">coming soon</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Faq');?>">FAQ</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Brands');?>">Brands</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Testimonial');?>">TESTIMONIAL</a></li>
+                                                <li><a href="<?php echo base_url('front_end/FAQ');?>">FAQ</a></li>
                                             </ul>
                                         </li>
                                     </ul>

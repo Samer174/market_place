@@ -383,6 +383,52 @@
     </div>
     <!-- service layout  end -->
 
+    <!-- brands section layout -->
+    <section id="team" class="team section-b-space slick-default-margin ratio_asos">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 style="padding-right: 38px;"><?=$this->lang->line('brand')?></h2>
+                    <div class="team-4">
+                        <?php foreach($brands as $brand):?>
+                        <div>
+                            <!-- <div>
+                                <img src="<?=base_url();?>assets/front/images/team/1.jpg" class="img-fluid blur-up lazyload bg-img" alt="">
+                            </div> -->
+                            <h4>
+                                <?php 
+                                    if($this->session->userdata('site_lang') == "english")
+                                    {
+                                        echo $brand["brand_name"];
+                                    }
+                                    else
+                                    {
+                                        echo $brand["brand_name_ar"];
+                                    }
+                                ?>
+                            </h4>
+                            <h6><a href="<?=base_url()?>front_end/category/products_of_cat/<?=$brand["category_id"]?>">
+                            <?php
+                                if($this->session->userdata('site_lang') == "english")
+                                {
+                                    echo $brand["name"];
+                                }
+                                else
+                                {
+                                    echo $brand["name_ar"];
+                                }
+                            ?>
+                        </a></h6>
+                        </div>
+                        <?php endforeach?>
+                    </div>
+                    <div align="center" style="margin-top: 50px;"><a href="<?=base_url()?>front_end/Brands" class="btn btn-solid"><?=$this->lang->line('view_all')?></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- brands layout  end -->
+
     <!-- instagram section -->
     <section class="instagram ratio_square">
         <div class="container-fluid">
@@ -526,10 +572,9 @@
 
     <!-- cookie bar start -->
     <div class="cookie-bar">
-        <p>We use cookies to improve our site and your shopping experience. By continuing to browse our site you accept
-            our cookie policy.</p>
-        <a href="javascript:void(0)" class="btn btn-solid btn-xs">accept</a>
-        <a href="javascript:void(0)" class="btn btn-solid btn-xs">decline</a>
+        <p><?=$this->lang->line('cookies')?></p>
+        <a href="javascript:void(0)" class="btn btn-solid btn-xs"><?=$this->lang->line('accept')?></a>
+        <a href="javascript:void(0)" class="btn btn-solid btn-xs"><?=$this->lang->line('decline')?></a>
     </div>
     <!-- cookie bar end -->
 
