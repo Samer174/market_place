@@ -96,19 +96,15 @@
                                                         aria-hidden="true"></i></div>
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url('');?>">Home</a>
+                                                <a href="<?php echo base_url('');?>"><?php echo $this->lang->line('home'); ?></a>
                                             </li>
+                                           
                                             <li>
-                                                <a href="#">feature<div class="lable-nav">new</div></a>
+                                                <a href="#"><?php echo $this->lang->line('shop'); ?></a>
                                             </li>
+                                           
                                             <li>
-                                                <a href="#">shop</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">product</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">pages</a>
+                                                <a href="#"><?php echo $this->lang->line('pages'); ?></a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -682,8 +678,8 @@
                                                         </li>
                                                     </ul>
                                                 </li> -->
-                                                <li><a href="<?php echo base_url('front_end/About');?>">about us</a></li>
-                                                <li><a href="<?php echo base_url('front_end/contact_info');?>">Contact Info</a></li>
+                                                <li><a href="<?php echo base_url('front_end/About');?>"><?php echo $this->lang->line('about'); ?></a></li>
+                                                <li><a href="<?php echo base_url('front_end/contact_info');?>"><?php echo $this->lang->line('contact'); ?></a></li>
                                                 <!-- <li><a href="<?php echo base_url('front_end/Search');?>">search</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Review');?>">review</a></li> -->
                                                 <!-- <li>
@@ -697,9 +693,9 @@
                                                 <li><a href="<?php echo base_url('front_end/Lookbook');?>">lookbook</a></li>
                                                 <li><a href="<?php echo base_url('front_end/Sitemap');?>">site map</a> -->
                                                 </li>
-                                                <li><a href="<?php echo base_url('front_end/Brands');?>">Brands</a></li>
-                                                <li><a href="<?php echo base_url('front_end/Testimonial');?>">TESTIMONIAL</a></li>
-                                                <li><a href="<?php echo base_url('front_end/FAQ');?>">FAQ</a></li>
+                                                <li><a href="<?php echo base_url('front_end/Brands');?>"><?php echo $this->lang->line('brand'); ?></a></li>
+                                                <li><a href="<?php echo base_url('front_end/Testimonial');?>"><?php echo $this->lang->line('testimonial'); ?></a></li>
+                                                <li><a href="<?php echo base_url('front_end/FAQ');?>"><?php echo $this->lang->line('faq'); ?></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -723,7 +719,7 @@
                                                                         <div class="form-group">
                                                                             <input type="text" name="search" class="form-control"
                                                                                 id="exampleInputPassword1"
-                                                                                placeholder="Search a Product" required>
+                                                                                placeholder="<?php echo $this->lang->line('search_product');?>" required>
                                                                         </div>
                                                                         <button type="submit" class="btn btn-primary"><i
                                                                                 class="fa fa-search"></i></button>

@@ -248,7 +248,12 @@ body {
     body.christmas section {
       overflow: hidden; }
 
-h1 {
+#warn_me{
+  width:550px;
+  
+}
+
+      h1 {
   font-size: 60px;
   color: #222222;
   font-weight: 700;

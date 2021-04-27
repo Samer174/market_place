@@ -10,7 +10,7 @@ class Front extends CI_Controller
          $this->load->model('front_model/Brand_Model');
     }
 
-    public function index($id=NULL)
+    public function index()
     {
         if($this->session->userdata('site_lang') !== null)
         {
@@ -44,7 +44,7 @@ class Front extends CI_Controller
         $data['sizes'] = $this->Product_Model->get_sizes_all();
         
         
-        
+        // print_r($this->session->userdata());
         $this->load->view('front/header', $data);
         $this->load->view('front/index');
         $this->load->view('front/footer');

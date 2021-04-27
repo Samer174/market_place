@@ -26,10 +26,14 @@ class Product extends CI_Controller
         $sizes = $this->Product_Model->get_sizes($id);
      /*  print_r($sizes); */
      
-       
+     $related_products =array();
+     if($data->product_tag !== 'null')
+     {
+       $related_products = $this->Product_Model->get_related_products($data->product_tag);
 
-     $related_products = $this->Product_Model->get_related_products($data->product_tag);
+     }
 
+     
       $this->load->view('front/header');
       $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes,'related_products'=> $related_products));
       $this->load->view('front/footer');
@@ -65,42 +69,44 @@ class Product extends CI_Controller
     public function Add_wish()
     {
      
-     
-     
          
-      // if( $this->session->userdata('loggedIn_front') ==true )
-      // {
-       $id = $this->session->userdata('user_id');
-       
+      if( $this->session->userdata('loggedIn_front') == true &&  $this->session->userdata('status') == '1' )
+      {
+        $id = $this->session->userdata('user_id');
         
-      $pid = $this->input->post('pid');
-         
-        //  $id = $this->input->post('id');
-         $wishlist = array(
-           
-           'user_id'=>$id,
-           'product_id'=>$pid,
-           
-         );
-        
+          
+        $pid = $this->input->post('pid');
+          
+          //  $id = $this->input->post('id');
+          $wishlist = array(
+            
+            'user_id'=>$id,
+            'product_id'=>$pid,
+            
+          );
+          
+        $this->db->insert('user_favorite',$wishlist);
+          // echo json_encode($wish);
+          $wish = $this->Product_Model->get_wish($id);
+          $i=1;
+          foreach($wish as $row)
+          {
+              echo "<tr>";
+              
+              echo "<td>".$row['name']."</td>";
+              echo "<td>".$row['price']."</td>";
+              echo "<td>".$row['status']."</td>";
+            
+              echo "</tr>";
+              $i++;
+          }
+      
+       }else{
+         echo 'false';
+
+       }
 
 
-       $this->db->insert('user_favorite',$wishlist);
-        // echo json_encode($wish);
-        $wish = $this->Product_Model->get_wish($id);
-        $i=1;
-				foreach($wish as $row)
-				{
-					  echo "<tr>";
-					  
-					  echo "<td>".$row['name']."</td>";
-					  echo "<td>".$row['price']."</td>";
-					  echo "<td>".$row['status']."</td>";
-           
-					  echo "</tr>";
-					  $i++;
-				}
-     
       }
       public function show_fav()
       {

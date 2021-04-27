@@ -827,8 +827,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-buttons"><a href="#" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> <a
-                                        href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
+                                <div class="product-buttons"><a href="#" id="cartEffect" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> 
+                                
+                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
                             </div>
                         </div>
                     </div>
@@ -1007,8 +1008,15 @@
           data:{pid:$id},
            success : function(data)
            { 
-                    // console.log(data);
+                   if(data!='false')
+                   {
+                       // console.log(data);
                 $('#wishtable').html(data);
+                   } 
+                   else{
+                       alert ('you need to login to add to wish list and activate your account');
+                       window.location.replace('<?php echo base_url('front_end/auth/login');?>');
+                   }
               
                
             }
@@ -1082,7 +1090,15 @@ function deleteItem($id)
 
         } );
 
-    }
+    } 
+  
+
+        $('#close_warn').click(function()
+        {
+            
+            $('#warn_me').hide();
+        });
+   
 
 
    </script>

@@ -13,7 +13,7 @@ class Checkout extends CI_Controller
 
     public function index()
     {
-        if($this->session->userdata('loggedIn_front') == true)
+        if($this->session->userdata('loggedIn_front') == true && $this->session->userdata('status')==1)
         {       
             $data['categories'] = $this->Category_Model->get_categories();
             $this->load->view('front/header',$data);
@@ -22,7 +22,12 @@ class Checkout extends CI_Controller
         }
         else
         {
-            redirect('front_end/auth/Login', 'location');
+            $data['error_msg'] = 'activate your account to checkout or <a href="'.base_url("front_end/auth/login").'">login</a>';
+            $data['categories'] = $this->Category_Model->get_categories();
+            $this->load->view('front/header',$data);
+            $this->load->view('front/index');
+            $this->load->view('front/footer');
+            
         }
     }
 

@@ -41,8 +41,10 @@ class Register extends CI_Controller {
 
             if($result != null)
             {
+                $this->session->set_userdata('user_id',  $result->u_id);
                 $this->session->set_userdata('name', $result->name);
                 $this->session->set_userdata('email', $result->email);
+                $this->session->set_userdata('status', $result->status);
                 $this->session->set_userdata('loggedIn_front', TRUE);
                 redirect('Front');
             }

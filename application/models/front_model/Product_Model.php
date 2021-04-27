@@ -20,9 +20,9 @@ class Product_Model extends CI_Model
         $this->db->select('product.*, brand.brand_id, brand.brand_name, brand.brand_name_ar, tag.tag_id, tag.tag_name, tag.tag_name_ar');
         $this->db->from('product');
         $this->db->where('id',$id);
-        $query = $this->db->get("product")->row();
-        $this->db->join('brand', 'product.product_brand = brand.brand_id');
-        $this->db->join('tag', 'product.product_tag = tag.tag_id');
+       
+        $this->db->join('brand', 'product.product_brand = brand.brand_id','left');
+        $this->db->join('tag', 'product.product_tag = tag.tag_id','left');
         $query = $this->db->get()->row();
 
         return $query;
