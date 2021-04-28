@@ -100,7 +100,7 @@ class Product_Model extends CI_Model
 
     public function get_sizes_all()
     {
-            $this->db->select('product_size.product_id,product_size.size_id,size.size_id,size.name');              
+            $this->db->select('product_size.product_id,product_size.size_id,size.size_id,size.name,product_size.product_stock_color');              
             $this->db->from('product_size,size');
             $this->db->where('size.size_id=product_size.size_id');
            

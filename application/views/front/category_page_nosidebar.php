@@ -121,7 +121,7 @@
                                                                         alt=""></a>
                                                             </div>
                                                             <div class="back">
-                                                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$product['id']);?>"><img src="<?=base_url()?>assets/front/images/pro3/36.jpg"
+                                                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$product['id']);?>"><<img src="<?php echo base_url('uploads/product/'.$product['image']);?>"
                                                                         class="img-fluid blur-up lazyload bg-img"
                                                                         alt=""></a>
                                                             </div>
