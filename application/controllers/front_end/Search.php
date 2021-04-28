@@ -6,6 +6,7 @@ class Search extends CI_Controller
 
         $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/Search_Model');
+         $this->load->model('front_model/Product_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
         
     }
@@ -21,7 +22,8 @@ class Search extends CI_Controller
         $categories = $this->Category_Model->get_categories();
         $data["categories"] = $categories;
         $data["data"] = $search_result;
-
+        $data['products'] = $this->Product_Model->get_products();
+        $data['sizes'] = $this->Product_Model->get_sizes_all();
         $this->load->view('front/header', $data);
         $this->load->view('front/category_page_nosidebar');
         $this->load->view('front/footer');
