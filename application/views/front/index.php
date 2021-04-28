@@ -627,7 +627,7 @@
                                 <div class="modal-bg">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <div class="offer-content"> <img src="../assets/front/images/Offer-banner.png"
+                                    <div class="offer-content"> <img src="<?=base_url()?>assets/front/images/Offer-banner.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <h2>newsletter</h2>
                                         <form
