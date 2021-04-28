@@ -20,6 +20,7 @@ class Product_Model extends CI_Model
         $this->db->select('product.*, brand.brand_id, brand.brand_name, brand.brand_name_ar, tag.tag_id, tag.tag_name, tag.tag_name_ar');
         $this->db->from('product');
         $this->db->where('id',$id);
+       
         $this->db->join('brand', 'product.product_brand = brand.brand_id','left');
         $this->db->join('tag', 'product.product_tag = tag.tag_id','left');
         $query = $this->db->get()->row();
@@ -39,6 +40,7 @@ class Product_Model extends CI_Model
             // print_r($q->result_array());
             
     }
+
 
 
     public function get_all_images($id)
@@ -68,6 +70,7 @@ class Product_Model extends CI_Model
             $q= $this->db->get();
             return $q->result_array();
             
+            
     }
 
     public function get_latest_products()
@@ -81,6 +84,33 @@ class Product_Model extends CI_Model
        return $result;
        
     }
+
+    public function get_wish($id)
+    {
+    
+        $this->db->select('user_favorite.user_id,user_favorite.product_id,product.id,product.name,product.price,product.status,product.id');              
+        $this->db->from('product,user_favorite');
+        $this->db->where('user_favorite.product_id=product.id');
+        $this->db->where('user_favorite.user_id',$id);
+        $q= $this->db->get();
+        return $q->result_array();
+       
+        
+    }
+
+    public function get_sizes_all()
+    {
+            $this->db->select('product_size.product_id,product_size.size_id,size.size_id,size.name');              
+            $this->db->from('product_size,size');
+            $this->db->where('size.size_id=product_size.size_id');
+           
+            $q= $this->db->get();
+            return $q->result_array();
+            
+            
+    }
+
+    
 
     public function get_related_products($pro_tag)
     {

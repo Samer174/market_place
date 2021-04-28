@@ -25,6 +25,10 @@
     <section class="section-b-space">
         <div class="container">
             <div class="checkout-page">
+                   
+               
+
+
                 <div class="checkout-form">
                     <form id="form_checkout" action="<?=base_url()?>front_end/checkout/checkout_submit" method="post">
                         <div class="row">

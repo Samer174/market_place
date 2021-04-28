@@ -31,7 +31,7 @@ class Category extends CI_Controller
 
     public function single_Cat($id=null)
     {
-        $data["category"] = $this->Category_model->get_single_cat($id);
+        $data["category"] = $this->Category_Model->get_single_cat($id);
         $this->load->view("front/single_category",$data);
     }
        
@@ -41,6 +41,8 @@ class Category extends CI_Controller
         $data['data']= $this->Product_Model->get_cat($id);
         $data["categories"] = $this->Category_Model->get_categories();
         $data['one_cat'] = $this->Category_Model->get_single_cat($id);
+        $data['products'] = $this->Product_Model->get_products();
+        $data['sizes'] = $this->Product_Model->get_sizes_all();
         $this->load->view('front/header',$data);
         $this->load->view('front/category_page_nosidebar');
         $this->load->view('front/footer');

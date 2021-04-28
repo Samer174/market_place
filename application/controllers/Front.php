@@ -40,10 +40,20 @@ class Front extends CI_Controller
         $data['categories_with_preiority'] = $categories_with_preiority;
         $data['brands'] = $this->Brand_Model->get_brands();
 
+        // $id = $this->input->post('id');
+        $data['sizes'] = $this->Product_Model->get_sizes_all();
+        
+        
+        // print_r($this->session->userdata());
         $this->load->view('front/header', $data);
         $this->load->view('front/index');
         $this->load->view('front/footer');
     }
+    // public function view_modal()
+    // {
+       
+    //     print_r($data);
+    // }
        
         
 }

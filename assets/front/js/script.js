@@ -369,6 +369,15 @@
             dots: true,
         });
     });
+    /* $('#wishlist').on('shown.bs.modal', function () {
+        $('.quick-slide-1').slick({
+            infinite: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            fade: true,
+            dots: true,
+        });
+    }); */
 
     $('.slide-2').slick({
         infinite: true,

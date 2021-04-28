@@ -19,6 +19,7 @@ class Login extends CI_Controller {
     function index()
     {
         $this->load->view('front/login');
+      
         
     }
 
@@ -31,11 +32,10 @@ class Login extends CI_Controller {
             
             $user_email = $this->input->post('user_email');
             $password = $this->input->post('user_password');
-            
-            echo $user_email;
+           
 
-            $result = $this->login->checkLogin($user_email, $password);
- 
+             $result = $this->login->checkLogin($user_email, $password);
+               
             if(count($result)>0)
             {
                 $this->session->set_userdata('user_id', $result[0]['u_id']);

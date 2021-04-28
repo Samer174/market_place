@@ -14,8 +14,6 @@ class Product extends CI_Controller
        
         $data = $this->Product_Model->get_single_product($id);
         
-      
-
 
       /*   multiple images for the same product */
       
@@ -27,16 +25,151 @@ class Product extends CI_Controller
 
         $sizes = $this->Product_Model->get_sizes($id);
      /*  print_r($sizes); */
-
-     $related_products = array();
-     if($data->product_tag !== "null")
+     
+     $related_products =array();
+     if($data->product_tag !== 'null')
      {
-        $related_products = $this->Product_Model->get_related_products($data->product_tag);
+       $related_products = $this->Product_Model->get_related_products($data->product_tag);
+
      }
 
+     
       $this->load->view('front/header');
       $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes,'related_products'=> $related_products));
       $this->load->view('front/footer');
     }
+
+    // public function wishlist()
+    // {
+    //  $id =  $this->input->post('id');
+    //  $name =  $this->input->post('name');
+    //  $price =  $this->input->post('price');
+    //  $status =  $this->input->post('status');
+    //  $wishlist = array(0=> array(
+    //    'id'=>$id,
+    //    'name'=>$name,
+    //    'price'=>$price,
+    //    'status'=>$status
+    //  ));
+     
+
+    //   $this->session->set_userdata('product_id',$wishlist);
+      
+         
+      
+      
+    // }
+
+    // public function destroy(){
+    //   $this->session->sess_destroy();
+    // }
+
+    
+
+    public function Add_wish()
+    {
+     
+         
+      if( $this->session->userdata('loggedIn_front') == true &&  $this->session->userdata('status') == '1' )
+      {
+        $id = $this->session->userdata('user_id');
+        
+          
+        $pid = $this->input->post('pid');
+          
+          //  $id = $this->input->post('id');
+          $wishlist = array(
+            
+            'user_id'=>$id,
+            'product_id'=>$pid,
+            
+          );
+          
+        $this->db->insert('user_favorite',$wishlist);
+          // echo json_encode($wish);
+          $wish = $this->Product_Model->get_wish($id);
+          $i=1;
+          foreach($wish as $row)
+          {
+              echo "<tr>";
+              
+              echo "<td>".$row['name']."</td>";
+              echo "<td>".$row['price']."</td>";
+              echo "<td>".$row['status']."</td>";
+            
+              echo "</tr>";
+              $i++;
+          }
+      
+       }else{
+         echo 'false';
+
+       }
+
+
+      }
+      public function show_fav()
+      {
+        $id = $this->session->userdata('user_id');
+        $wish = $this->Product_Model->get_wish($id);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+            if($this->session->userdata('site_lang') == "english")
+            {
+              echo "<td>".$row['name']."</td>";
+            }
+            else
+            {
+              if(empty($row['name_ar']))
+              {
+                echo "<td>".$row['name']."</td>";
+              }
+              else
+              {
+                 echo "<td>".$row['name_ar']."</td>";
+              }
+             
+            }
+					 
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            echo "<td><a href='#' onclick = 'deleteItem(".$row['id'].")' class='icon me-3'><i class='ti-close'></i></a></td>";
+					  echo "</tr>";
+					  $i++;
+				}
+      }
+
+
+   
+      public function delete_wish()
+      {
+        $product_id = $this->input->post('pro_id');
+        $this->db->where('product_id',$product_id);
+        $this->db->delete('user_favorite');
+
+
+        
+        $id = $this->session->userdata('user_id');
+        $wish = $this->Product_Model->get_wish($id);
+        $i=1;
+				foreach($wish as $row)
+				{
+					  echo "<tr>";
+					  
+					  echo "<td>".$row['name']."</td>";
+					  echo "<td>".$row['price']."</td>";
+					  echo "<td>".$row['status']."</td>";
+            echo "<td><a href='#' onclick = 'deleteItem(".$row['id'].")' class='icon me-3'><i class='ti-close'></i></a></td>";
+					  echo "</tr>";
+					  $i++;
+        }
+      }
+
+
+
+
+    
         
 }

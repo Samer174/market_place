@@ -24,8 +24,8 @@
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">collection</li>
+                            <li class="breadcrumb-item"><a href="index.html"><?php echo $this->lang->line('home');?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $this->lang->line('our_collection');?></li>
                         </ol>
                     </nav>
                 </div>
@@ -46,9 +46,13 @@
                                 <div class="col-sm-12">
                                     <div class="top-banner-wrapper">
                                         <a href="#"><img src="<?=base_url()?>uploads/category/<?php echo $one_cat->icon?>"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2809181311351f86b48be8d8bc8195920012ecc9
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
-                                            <h4>BIGGEST DEALS ON TOP BRANDS</h4>
+                                            <h4><?php echo $this->lang->line('top_deals');?></h4>
                                             <p>The trick to choosing the best wear for yourself is to keep in mind your
                                                 body type, individual style, occasion and also the time of day or
                                                 weather.
@@ -127,12 +131,12 @@
                                                             </div>
                                                             <div class="cart-info cart-wrap">
                                                                 <button data-bs-toggle="modal"
-                                                                    data-bs-target="#addtocart" title="Add to cart"><i
+                                                                data-bs-target="#addtocart" title="Add to cart" class="add_cart" data-productid="<?php echo $product['id'];?>" data-productname="<?php echo $product['name'];?>" data-productprice="<?php echo $product['price'];?>" data-productimage="<?php echo $product['image'];?>"><i
                                                                         class="ti-shopping-cart"></i></button> <a
-                                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                                    href="javascript:void(0)" onclick="Add_wishlist(<?php echo $product['id'];?>)" title="Add to Wishlist"><i
                                                                         class="ti-heart" aria-hidden="true"></i></a> <a
                                                                     href="#" data-bs-toggle="modal"
-                                                                    data-bs-target="#quick-view" title="Quick View"><i
+                                                                    data-bs-target="#quick-view-exclusive<?php echo $product['id'];?>" title="Quick View"><i
                                                                         class="ti-search" aria-hidden="true"></i></a> <a
                                                                     href="compare.html" title="Compare"><i
                                                                         class="ti-reload" aria-hidden="true"></i></a>
@@ -225,4 +229,94 @@
     <!-- section End -->
 
 
+
+
     
+    
+<!-- <-- Quick-view modal popup start--> 
+
+<?php foreach($products as $item):?> 
+
+<div class="modal fade bd-example-modal-lg theme-modal" id="quick-view-exclusive<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content quick-view-modal">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="quick-view-img"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>" alt=""
+                                class="img-fluid blur-up lazyload"></div>
+                    </div>
+                    <div class="col-lg-6 rtl-text">
+                        <div class="product-right">
+                            <h2><?php echo $item['name'] ;?></h2>
+                            <h3><?php echo $item['price'] ;?></h3>
+                            <ul class="color-variant">
+                            <?php foreach($sizes as $size):?>
+
+                          <?php  if($size['product_id'] == $item['id'])
+                          { ?>
+                            <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
+
+                          
+                          <?php  }
+                            
+
+
+                        endforeach;?>
+                            </ul>
+                            <div class="border-product">
+                                <h6 class="product-title"><?php echo $this->lang->line('details');?></h6>
+                                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
+                                    doloremque laudantium</p>
+                            </div>
+                            <div class="product-description border-product">
+                            <div class="size-box" id = "size_P">
+                                <ul>
+
+                                <?php foreach($sizes as $size):?>
+                              
+                               <?php if($size['product_id'] == $item['id'])
+                                { ?>
+                                    <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
+                               <?php  }
+                                
+                                     endforeach;?>
+
+                                </ul>
+                            </div>
+                                <h6 class="product-title"><?php echo $this->lang->line('select_product_quantity');?></h6>
+                                <div class="qty-box">
+                                    <div class="input-group"><span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-left-minus" data-type="minus" data-field=""><i
+                                                    class="ti-angle-left"></i></button> </span>
+                                        <input type="text" name="quantity" class="form-control input-number"
+                                            value="1"> <span class="input-group-prepend"><button type="button"
+                                                class="btn quantity-right-plus" data-type="plus" data-field=""><i
+                                                    class="ti-angle-right"></i></button></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-buttons"><a href="#" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> <a
+                                    href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach;?>
+
+<!-- Quick-view modal popup end-->
+
+     <!-- cart start -->
+     <div class="addcart_btm_popup" id="fixed_cart_icon">
+        <a href="#" class="fixed_cart">
+            <i class="ti-shopping-cart"></i>
+        </a>
+    </div>
+    <!-- cart end -->
+

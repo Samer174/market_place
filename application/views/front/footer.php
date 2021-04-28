@@ -756,6 +756,166 @@
     </div>
     <!-- theme setting -->
 
+    <
+    
+    <!-- Quick-view modal popup end-->
+
+
+    <!-- Quick-view modal popup start-->
+
+    <?php foreach($latest_products as $item):?> 
+
+    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <div class="row">
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="quick-view-img"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>" alt=""
+                                    class="img-fluid blur-up lazyload"></div>
+                        </div>
+                        <div class="col-lg-6 rtl-text">
+                            <div class="product-right">
+                                <h2><?php echo $item['name'] ;?></h2>
+                                <h3><?php echo $item['price'] ;?></h3>
+                                <ul class="color-variant">
+                                <?php foreach($sizes as $size):?>
+
+                              <?php  if($size['product_id'] == $item['id'])
+                              { ?>
+                                <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
+
+                              
+                              <?php  }
+                                
+
+
+                            endforeach;?>
+                                </ul>
+                                <div class="border-product">
+                                    <h6 class="product-title"><?php echo $this->lang->line('details');?></h6>
+                                    <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
+                                        doloremque laudantium</p>
+                                </div>
+                                <div class="product-description border-product">
+                                <div class="size-box" id = "size_P">
+                                    <ul>
+
+                                    <?php foreach($sizes as $size):?>
+                                  
+                                   <?php if($size['product_id'] == $item['id'])
+                                    { ?>
+                                        <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
+                                   <?php  }
+                                    
+                                         endforeach;?>
+
+                                    </ul>
+                                </div>
+                                    <h6 class="product-title"><?php echo $this->lang->line('select_product_quantity');?></h6>
+                                    <div class="qty-box">
+                                        <div class="input-group"><span class="input-group-prepend"><button type="button"
+                                                    class="btn quantity-left-minus" data-type="minus" data-field=""><i
+                                                        class="ti-angle-left"></i></button> </span>
+                                            <input type="text" name="quantity" class="form-control input-number"
+                                                value="1"> <span class="input-group-prepend"><button type="button"
+                                                    class="btn quantity-right-plus" data-type="plus" data-field=""><i
+                                                        class="ti-angle-right"></i></button></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-buttons"><a href="#" id="cartEffect" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> 
+                                
+                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endforeach;?>
+    
+    <!-- Quick-view modal popup end-->
+
+<!-- wishlist modal starts-->
+    
+<div class="modal fade bd-example-modal-lg theme-modal " id="wishlist" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content quick-view-modal ">
+                <div class="modal-body ">
+                 
+
+                                        <!--section start-->
+                        <section class="wishlist-section section-b-space ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive-xs">
+                                        <table class="table cart-table" >
+                                            <thead>
+                                                <tr class="table-head">
+                                                    
+                                                    <th scope="col"><?php echo $this->lang->line('product_name_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_price_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_availability_modal');?></th>
+                                                    <th scope="col"><?php echo $this->lang->line('product_action_modal');?></th>
+                                                </tr>
+                                            </thead>
+                                             
+                                            <tbody  id = "wishtable" >
+                                           
+                                                
+                                                <tr>
+                                                
+                                               
+                                                        
+                                                        <td><a href="#" onclick = "deleteItem()" class="icon me-3"><i class="ti-close"></i> </a><a href="#"
+                                                                class="cart"><i class="ti-shopping-cart"></i></a></td>
+                                                                            
+                                           
+                                            </tr> 
+                                            
+                                           
+                                            </tbody>
+                                            
+                                            
+                                        </table> 
+                                    </div>
+                                </div>
+                                <div class="row wishlist-buttons">
+                                    <div class="col-12"><a href="#" data-bs-dismiss="modal" class="btn btn-solid"><?php echo $this->lang->line('continue_shopping_modal');?></a> </div>
+                                </div>
+                            </div>
+                            
+
+                          
+
+                           
+                        </section>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+   
+    <!-- wishlist modal ends-->
+
+
+
+
+
+
+
+
+
+
 
     <!-- tap to top start -->
     <div class="tap-top">
@@ -804,6 +964,148 @@
             document.getElementById("search-overlay").style.display = "none";
         }
     </script>
+ <script>
+//    function addWish($id,$name,$price,$status)
+//    {
+//        /* console.log($price); */
+//     $.ajax(
+//         {
+//            type:'POST',
+//            url:'front_end/Product/wishlist',
+//            data:{id:$id,
+//            name :$name,
+//            price:$price,
+//            status:$status},
+//            success : function(data)
+//            { 
+
+//                 $('#wishtable').load('front/index' + ' #wishtable');
+              
+               
+//            }
+
+//        }).done(function(){
+//            alert($id);
+//        });
+
+      
+//    }
+
+//    function deleteItem()
+
+//     {
+//         $('#hidden').hide()
+      
+//     }   
+   
+
+   function Add_wishlist($id)
+   {
+     $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/Add_wish',
+          data:{pid:$id},
+           success : function(data)
+           { 
+                   if(data!='false')
+                   {
+                       // console.log(data);
+                $('#wishtable').html(data);
+                   } 
+                   else{
+                       alert ('you need to login to add to wish list and activate your account');
+                       window.location.replace('<?php echo base_url('front_end/auth/login');?>');
+                   }
+              
+               
+            }
+
+        } );
+
+    }
+
+
+
+
+   function show_wish()
+   {
+      $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/show_fav',
+         
+           success : function(data)
+           { 
+                    // console.log(data);
+                $('#wishtable').html(data);
+              
+               
+            }
+
+        } );
+
+    }
+
+
+function deleteItem($id)
+ {
+    // console.log($id);
+
+
+     $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/front_end/Product/delete_wish',
+          data:{pro_id:$id
+                },
+           success : function(data)
+           { 
+                    // console.log(data);
+                    $('#wishtable').html(data);
+                    // $('#wishtable').load('front/index' + ' #wishtable');
+              
+               
+            }
+
+        });
+  }
+
+  function show_quick_modal($id)
+   {
+      $.ajax(
+        {
+           type:'POST',
+           url:'<?php echo base_url();?>/Front',
+            data:{id:$id},
+           success : function(data)
+           { 
+                    console.log($id);
+                // $('#wishtable').html(data);
+                
+                //  $('#size_P').load('front/index' + ' #size_P');
+              
+               
+            }
+
+        } );
+
+    } 
+  
+
+        $('#close_warn').click(function()
+        {
+            
+            $('#warn_me').hide();
+        });
+   
+
+
+   </script>
+
+
+
+
 <!-- Cart Script -->
 <script type="text/javascript">
     $(document).ready(function(){

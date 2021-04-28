@@ -1,4 +1,21 @@
 
+ 
+ 
+
+ 
+     <?php if(isset($error_msg)){
+                    echo '
+                    <div align ="center"><div class="alert alert-danger  alert-dismissible fade show" role="alert" id="warn_me">
+   '.$error_msg.'.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close_warn">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div></div>
+                    
+                    ';
+                }
+                ;?>
+   
     <!-- Home slider -->
     <section class="p-0">
         <div class="slide-1 home-slider">
@@ -108,7 +125,7 @@
             <div class="row">
                 <div class="col">
                     <div class="product-4 product-m no-arrow">
-                    <?php foreach($latest_products as $item):?> 
+                     <?php foreach($latest_products as $item):?> 
                         <div class="product-box">
                             <div class="img-wrapper">
                                 <div class="front">
@@ -123,10 +140,10 @@
                                     <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" class="add_cart" data-productid="<?php echo $item['id'];?>" data-productname="<?php echo $item['name'];?>" data-productprice="<?php echo $item['price'];?>" data-productimage="<?php echo $item['image'];?>">
                                         <i class="ti-shopping-cart"></i>
                                     </button>
-                                    <a href="javascript:void(0)" title="Add to Wishlist">
+                                    <a href="javascript:void(0)"  onclick="Add_wishlist('<?php echo $item['id'];?>')" title="Add to my fav">
                                         <i class="ti-heart" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                    <a href="#" onclick="show_quick_modal('<?php echo $item['id'];?>')" data-bs-toggle="modal" data-bs-target="#quick-view<?php echo $item['id'] ;?>" title="Quick View">
                                         <i class="ti-search" aria-hidden="true"></i>
                                     </a>
                                     <a href="compare.html" title="Compare">
@@ -158,8 +175,26 @@
                                     <li class="bg-light1"></li>
                                     <li class="bg-light2"></li>
                                 </ul>
+                           
                             </div>
+
+
+
+
+
+
+                        
+
+
+
+
                         </div>
+
+
+                        
+
+
+
 
                         <?php endforeach;?>                       
                     </div>
@@ -246,18 +281,19 @@
                                                                         </div>
                                                                         <div class="back">
                                                                             <div style="background-color: #fff;">
-                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$product['id'].'" style="opacity: 0.4;"><img
+                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$product["id"].'" style="opacity: 0.4;"><img
                                                                                         src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                             </div>
                                                                         </div>
                                                                         <div class="cart-info cart-wrap">
+                                                                            
                                                                             <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart" class="add_cart" data-productid="'.$product['id'].'" data-productname="'.$product['name'].'" data-productprice="'.$product['price'].'" data-productimage="'.$product['image'].'">
                                                                                 <i class="ti-shopping-cart"></i></button> 
-                                                                                <a href="javascript:void(0)" title="Add to Wishlist"><i
+                                                                                <a href="javascript:void(0)" onclick="Add_wishlist('.$product["id"].')" title="Add to Wishlist"><i
                                                                                     class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                                data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                                                title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                                                                                data-bs-toggle="modal" data-bs-target="#quick-view-exclusive'.$product["id"].'"
+                                                                                title="Quick"><i class="ti-search" aria-hidden="true"></i></a>
                                                                             <a href="compare.html" title="Compare"><i class="ti-reload"
                                                                                     aria-hidden="true"></i></a>
                                                                         </div>
@@ -278,7 +314,7 @@
                                                                                 }
                                                                             echo '</h6>
                                                                         </a>
-                                                                        <h4>$50.00</h4>
+                                                                        <h4>'.$product["price"].'</h4>
                                                                         <ul class="color-variant">
                                                                             <li class="bg-light0"></li>
                                                                             <li class="bg-light1"></li>
@@ -618,8 +654,36 @@
     <!--modal popup end-->
 
 
-    <!-- Quick-view modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
+
+
+<?php $lwish = $this->session->userdata('product_id');
+/* echo $this->session->userdata('product_id')['name']; */
+if(!empty($lwish))
+{
+    foreach($lwish as $item)
+    {
+        echo $item['name'];
+    }
+}
+/* for($i=0;$i<count($lwish);$i++){
+    echo $lwish[$i];
+}
+echo $lwish['name']; */
+// print_r($lwish);
+//  foreach( $lwish as $it)
+//  {
+//      echo $it['name'];
+//  }
+ 
+ ?>
+
+
+    
+<!-- <-- Quick-view modal popup start--> 
+
+    <?php foreach($products as $item):?> 
+
+    <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view-exclusive<?php echo $item['id'] ;?>" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content quick-view-modal">
@@ -628,33 +692,48 @@
                             aria-hidden="true">&times;</span></button>
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
-                            <div class="quick-view-img"><img src="../assets/front/images/pro3/1.jpg" alt=""
+                            <div class="quick-view-img"><img src="<?php echo base_url('uploads/product/'.$item['image']);?>" alt=""
                                     class="img-fluid blur-up lazyload"></div>
                         </div>
                         <div class="col-lg-6 rtl-text">
                             <div class="product-right">
-                                <h2>Women Pink Shirt</h2>
-                                <h3>$32.96</h3>
+                                <h2><?php echo $item['name'] ;?></h2>
+                                <h3><?php echo $item['price'] ;?></h3>
                                 <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
+                                <?php foreach($sizes as $size):?>
+
+                              <?php  if($size['product_id'] == $item['id'])
+                              { ?>
+                                <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
+
+                              
+                              <?php  }
+                                
+
+
+                            endforeach;?>
                                 </ul>
                                 <div class="border-product">
-                                    <h6 class="product-title">product details</h6>
+                                    <h6 class="product-title"><?php echo $this->lang->line('details');?></h6>
                                     <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
                                         doloremque laudantium</p>
                                 </div>
                                 <div class="product-description border-product">
-                                    <div class="size-box">
-                                        <ul>
-                                            <li class="active"><a href="javascript:void(0)">s</a></li>
-                                            <li><a href="javascript:void(0)">m</a></li>
-                                            <li><a href="javascript:void(0)">l</a></li>
-                                            <li><a href="javascript:void(0)">xl</a></li>
-                                        </ul>
-                                    </div>
-                                    <h6 class="product-title">quantity</h6>
+                                <div class="size-box" id = "size_P">
+                                    <ul>
+
+                                    <?php foreach($sizes as $size):?>
+                                  
+                                   <?php if($size['product_id'] == $item['id'])
+                                    { ?>
+                                        <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
+                                   <?php  }
+                                    
+                                         endforeach;?>
+
+                                    </ul>
+                                </div>
+                                    <h6 class="product-title"><?php echo $this->lang->line('select_product_quantity');?></h6>
                                     <div class="qty-box">
                                         <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                     class="btn quantity-left-minus" data-type="minus" data-field=""><i
@@ -666,8 +745,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-buttons"><a href="#" class="btn btn-solid">add to cart</a> <a
-                                        href="#" class="btn btn-solid">view detail</a></div>
+                                <div class="product-buttons"><a href="#" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> <a
+                                        href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
                             </div>
                         </div>
                     </div>
@@ -675,8 +754,10 @@
             </div>
         </div>
     </div>
+    <?php endforeach;?>
+    
     <!-- Quick-view modal popup end-->
-
+    
 
     <!-- cart start -->
     <div class="addcart_btm_popup" id="fixed_cart_icon">
@@ -685,6 +766,7 @@
         </a>
     </div>
     <!-- cart end -->
+    
 
 
 
