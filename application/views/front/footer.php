@@ -784,11 +784,24 @@
                                 <ul class="color-variant">
                                 <?php if(!empty($size))
                                 {
-                                        foreach($sizes as $size):?>
-                                        <?php  if($size['product_id'] == $item['id'])
-                                                { ?>
-                                                    <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>                               
-                                <?php           }
+                                        $count = 0;
+                                        foreach($sizes as $key => $size):?>
+                                        <?php   if($size['product_id'] == $item['id'])
+                                                { 
+                                                    if($count != 0)
+                                                    {
+                                                        $prev_key = $key-1;
+                                                        if($size['product_stock_color'] != $sizes[$prev_key]['product_stock_color'])
+                                                        {?>
+                                                            <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>                               
+                                <?php                   }
+                                                    }
+                                                    else
+                                                    {?>
+                                                        <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
+                                <?php               }
+                                                    $count++;
+                                                }
                                         endforeach;
                                 }
                                 else
