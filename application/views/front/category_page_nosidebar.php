@@ -46,10 +46,6 @@
                                 <div class="col-sm-12">
                                     <div class="top-banner-wrapper">
                                         <a href="#"><img src="<?=base_url()?>uploads/category/<?php echo $one_cat->icon?>"
-<<<<<<< HEAD
-=======
-
->>>>>>> 2809181311351f86b48be8d8bc8195920012ecc9
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
                                             <h4><?php echo $this->lang->line('top_deals');?></h4>
