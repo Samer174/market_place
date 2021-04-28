@@ -560,42 +560,42 @@
                     <div class="slide-6 no-arrow">
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/1.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/1.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/2.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/2.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/3.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/3.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/4.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/4.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/5.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/5.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/6.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/6.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/7.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/7.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/8.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/8.png" alt=""></a>
                             </div>
                         </div>
                     </div>
