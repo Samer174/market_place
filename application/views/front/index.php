@@ -560,42 +560,42 @@
                     <div class="slide-6 no-arrow">
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/1.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/1.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/2.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/2.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/3.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/3.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/4.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/4.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/5.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/5.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/6.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/6.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/7.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/7.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/front/images/logos/8.png" alt=""></a>
+                                <a href="#"><img src="<?=base_url()?>assets/front/images/logos/8.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -627,7 +627,7 @@
                                 <div class="modal-bg">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <div class="offer-content"> <img src="../assets/front/images/Offer-banner.png"
+                                    <div class="offer-content"> <img src="<?=base_url()?>assets/front/images/Offer-banner.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <h2>newsletter</h2>
                                         <form
