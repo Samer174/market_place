@@ -240,13 +240,13 @@
                                                             echo '<div class="product-box">
                                                                     <div class="img-wrapper">
                                                                         <div class="front">
-                                                                            <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'"><img
+                                                                            <a href="'.base_url().'front_end/Product/Single_product/'.$product['id'].'"><img
                                                                                     src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                         </div>
                                                                         <div class="back">
                                                                             <div style="background-color: #fff;">
-                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'" style="opacity: 0.4;"><img
+                                                                                <a href="'.base_url().'front_end/Product/Single_product/'.$product['id'].'" style="opacity: 0.4;"><img
                                                                                         src="'.base_url().'uploads/product/'.$product["image"].'"
                                                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                             </div>
@@ -266,7 +266,7 @@
                                                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                                                 class="fa fa-star"></i></div>
-                                                                        <a href="'.base_url().'front_end/Product/Single_product/'.$item['id'].'">
+                                                                        <a href="'.base_url().'front_end/Product/Single_product/'.$product['id'].'">
                                                                             <h6>';
                                                                             if($this->session->userdata('site_lang') == "english")
                                                                                 {

@@ -48,9 +48,10 @@ class Cart extends CI_Controller
         {
             $color = "";
         }
+        $name = str_replace(array('(',')',',','/'),"-",$this->input->post('product_name'));
       $data = array(
           'id' => $this->input->post('product_id'), 
-          'name' => $this->input->post('product_name'), 
+          'name' => $name, 
           'price' => $this->input->post('product_price'), 
           'qty' => $qty, 
           'options' => array('image' => $this->input->post('product_image'),
@@ -71,10 +72,11 @@ class Cart extends CI_Controller
 
             <li>
                 <div class="media">
-                    <a href=""><img alt="" class="me-3"
+                    <a href=""><img alt="" class="me-3" style="max-width: 87px;"
                             src="'.base_url().'uploads/product/';
                              if ($this->cart->has_options($items['rowid']) == TRUE)
                              {
+                                $string_name = (strlen($items['name']) > 30) ? substr($items['name'],0,29).'...' : $items['name'];
                                 $output .=$this->cart->product_options($items["rowid"])["image"];
                             //     foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value)
                             //     {
@@ -84,7 +86,7 @@ class Cart extends CI_Controller
                             $output .='"></a>
                     <div class="media-body">
                         <a href="#">
-                            <h4>'.$items['name'].'</h4>
+                            <h4>'.$string_name.'</h4>
                         </a>
                         <h4><span>'.$items['qty'].' x $ '.number_format($items['price']).'</span></h4>
                     </div>

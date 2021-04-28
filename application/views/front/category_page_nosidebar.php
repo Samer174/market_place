@@ -7,7 +7,18 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>collection</h2>
+                        <h2>
+                            <?php 
+                            if($this->session->userdata('site_lang') == "english")
+                            {
+                                echo $one_cat->name;
+                            }
+                            else
+                            {
+                                echo $one_cat->name_ar;
+                            }
+                            ?>
+                        </h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -34,7 +45,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="top-banner-wrapper">
-                                        <a href="#"><img src="<?=base_url()?>assets/front/images/mega-menu/2.jpg"
+                                        <a href="#"><img src="<?=base_url()?>uploads/category/<?php echo $one_cat->icon?>"
                                                 class="img-fluid blur-up lazyload" alt=""></a>
                                         <div class="top-banner-content small-section">
                                             <h4>BIGGEST DEALS ON TOP BRANDS</h4>

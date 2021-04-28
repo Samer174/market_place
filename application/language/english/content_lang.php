@@ -74,3 +74,4 @@ $lang['cookies'] = "We use cookies to improve our site and your shopping experie
 $lang['accept'] = "Accept";
 $lang['decline'] = "Decline";
 $lang['view_all'] = "View All";
+$lang['about'] = "About Us";

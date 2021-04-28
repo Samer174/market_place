@@ -28,7 +28,11 @@ class Product extends CI_Controller
         $sizes = $this->Product_Model->get_sizes($id);
      /*  print_r($sizes); */
 
-     $related_products = $this->Product_Model->get_related_products($data->product_tag);
+     $related_products = array();
+     if($data->product_tag !== "null")
+     {
+        $related_products = $this->Product_Model->get_related_products($data->product_tag);
+     }
 
       $this->load->view('front/header');
       $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes,'related_products'=> $related_products));

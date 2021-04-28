@@ -41,6 +41,7 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('user_id', $result[0]['u_id']);
                 $this->session->set_userdata('name', $result[0]['name']);
                 $this->session->set_userdata('email', $result[0]['email']);
+                $this->session->set_userdata('status', $result[0]['status']);
                 $this->session->set_userdata('loggedIn_front', TRUE);
                 redirect('Front');
             }

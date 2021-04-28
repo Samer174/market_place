@@ -92,19 +92,13 @@
                                                         aria-hidden="true"></i></div>
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url('');?>">Home</a>
+                                                <a href="<?php echo base_url('');?>"><?=$this->lang->line("home")?></a>
                                             </li>
                                             <li>
-                                                <a href="#">feature<div class="lable-nav">new</div></a>
+                                                <a href="#"><?=$this->lang->line("shop")?></a>
                                             </li>
                                             <li>
-                                                <a href="#">shop</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">product</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">pages</a>
+                                                <a href="#"><?=$this->lang->line("pages")?></a>
                                             </li>
                                         </ul>
                                     </nav>
