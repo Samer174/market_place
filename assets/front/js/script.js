@@ -1933,10 +1933,10 @@ $('.size-box ul li').on('click', function (e) {
     $(this).parent().addClass('selected');
 });
 
-$('#cartEffect').on('click', function (e) {
-    if($("#selectSize .size-box ul").hasClass('empty_size'))
+$('.cartEffect').on('click', function (e) {
+    if($(".size-box ul").hasClass('empty_size'))
     {
-        $('#cartEffect').text("Added to bag ");
+        $('.cartEffect').text("Added to bag ");
         $('.added-notification').addClass("show");
         setTimeout(function () {
             $('.added-notification').removeClass("show");
@@ -1944,8 +1944,8 @@ $('#cartEffect').on('click', function (e) {
     }
     else
     {
-        if ($("#selectSize .size-box ul").hasClass('selected')) {
-            $('#cartEffect').text("Added to bag ");
+        if ($(".size-box ul").hasClass('selected')) {
+            $('.cartEffect').text("Added to bag ");
             $('.added-notification').addClass("show");
             setTimeout(function () {
                 $('.added-notification').removeClass("show");

@@ -782,18 +782,19 @@
                                 <h2><?php echo $item['name'] ;?></h2>
                                 <h3><?php echo $item['price'] ;?></h3>
                                 <ul class="color-variant">
-                                <?php foreach($sizes as $size):?>
-
-                              <?php  if($size['product_id'] == $item['id'])
-                              { ?>
-                                <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
-
-                              
-                              <?php  }
-                                
-
-
-                            endforeach;?>
+                                <?php if(!empty($size))
+                                {
+                                        foreach($sizes as $size):?>
+                                        <?php  if($size['product_id'] == $item['id'])
+                                                { ?>
+                                                    <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>                               
+                                <?php           }
+                                        endforeach;
+                                }
+                                else
+                                {?>
+                                        <li class="bg-light0 " style="background-color:<?php echo $item['product_color'];?>"></li>
+                                <?php }?>
                                 </ul>
                                 <div class="border-product">
                                     <h6 class="product-title"><?php echo $this->lang->line('details');?></h6>
@@ -802,7 +803,7 @@
                                 </div>
                                 <div class="product-description border-product">
                                 <div class="size-box" id = "size_P">
-                                    <ul>
+                                    <ul <?php if(empty($sizes)){echo 'class="empty_size"';}?>>
 
                                     <?php foreach($sizes as $size):?>
                                   
@@ -820,16 +821,16 @@
                                         <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                     class="btn quantity-left-minus" data-type="minus" data-field=""><i
                                                         class="ti-angle-left"></i></button> </span>
-                                            <input type="text" name="quantity" class="form-control input-number"
-                                                value="1"> <span class="input-group-prepend"><button type="button"
+                                            <input type="number" name="quantity" class="form-control input-number pro_quantity<?=$item['id']?>" value="1"> 
+                                            <span class="input-group-prepend"><button type="button"
                                                     class="btn quantity-right-plus" data-type="plus" data-field=""><i
                                                         class="ti-angle-right"></i></button></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-buttons"><a href="#" id="cartEffect" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> 
-                                
-                                <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
+                                <div class="product-buttons">
+                                    <a href="javascript:void(0)" id="cartEffect2" class=" cartEffect btn btn-solid qty" data-productid="<?php echo $item['id'] ;?>" data-productname="<?php echo $item['name'] ;?>" data-productprice="<?php echo $item['price'] ;?>" data-productimage="<?php echo $item['image'] ;?>"> <?php echo $this->lang->line('add_to_cart');?></a>     
+                                    <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
                             </div>
                         </div>
                     </div>
@@ -1149,7 +1150,9 @@ function deleteItem($id)
 </script>
 <!-- Cart Script -->
 <script type="text/javascript">
-        $('#cartEffect').on('click', function (e) {
+
+        $('.cartEffect').on('click', function (e) {
+            // alert('asd');
             var product_id    = $(this).data("productid");
             var product_name  = $(this).data("productname");
             var product_price = $(this).data("productprice");
@@ -1164,29 +1167,43 @@ function deleteItem($id)
             {
                 color = $( $(".product_color_list li") ).css( "background-color" );
             }
-            if($("#selectSize .size-box ul").hasClass('empty_size'))
+            if($(".size-box ul").hasClass('empty_size'))
             {
                 
             }
             else
             {
-                if($("#selectSize .size-box ul li").hasClass('active'))
+                if($(".size-box ul li").hasClass('active'))
                 {
-                    size = $("#selectSize .size-box ul .active").children("a").text();
+                    size = $(".size-box ul .active").children("a").text();
                 }
             }
-             var quantity = $('.product_quantity').val();
-            //  console.log(product_name);
-            //  console.log(color);
-            //  console.log(size);
+            // $(".product_quantity"+product_id).each(function() {
+                if ($('.cartEffect').hasClass('qty')) {
+                    var quantity = $('.pro_quantity'+product_id).val();
+                }
+                else
+                {
+                    var quantity = $('.product_quantity'+product_id).val();
+                }
+            // });
+            
+             
+             console.log(product_name);
+             console.log(color);
+             console.log(size);
+             console.log(product_image);
+             console.log(quantity);
             $.ajax({
                 url : "<?php echo site_url('front_end/cart/add_to_cart');?>",
                 method : "POST",
                 data : {product_id: product_id, product_name: product_name, product_price: product_price, product_image: product_image, product_color: color, product_size: size,quantity: quantity},
                 success: function(data){
                     console.log("add to cart success");
-                    console.log(data);
+                    // console.log(data);
                     $('#detail_cart_home').html(data);
+                    var value = parseInt($(".cart_qty_cls").text(), 10) + 1;
+                    $(".cart_qty_cls").text(value);
                 }
             });
         });

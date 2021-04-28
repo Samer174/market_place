@@ -138,9 +138,6 @@
                                     <ul <?php if(empty($sizes)){echo 'class="empty_size"';}?> >
                                     <?php foreach($sizes as $size):?>
                                         <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
-                                        <!-- <li><a href="javascript:void(0)">m</a></li>
-                                        <li><a href="javascript:void(0)">l</a></li>
-                                        <li><a href="javascript:void(0)">xl</a></li> -->
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -149,7 +146,7 @@
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
                                                     class="ti-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number product_quantity" value="1">
+                                        <input type="text" name="quantity" class="form-control input-number product_quantity<?=$product->id?>" value="1">
                                         <span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-right-plus" data-type="plus" data-field=""><i
                                                     class="ti-angle-right"></i></button></span>
@@ -158,7 +155,7 @@
                             </div>
                             
                             <div class="product-buttons">
-                                <a href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation add_cart_pro_page" data-productid="<?php echo $product->id ;?>" data-productname="<?php echo $product->name ;?>" data-productprice="<?php echo $product->price ;?>" data-productimage="<?php echo $product->image ;?>">
+                                <a href="javascript:void(0)" id="cartEffect" class="cartEffect btn btn-solid hover-solid btn-animation add_cart_pro_page" data-productid="<?php echo $product->id ;?>" data-productname="<?php echo $product->name ;?>" data-productprice="<?php echo $product->price ;?>" data-productimage="<?php echo $product->image ;?>">
                                     <i class="fa fa-shopping-cart me-1" aria-hidden="true"></i> <?php echo $this->lang->line('add_to_cart');?></a> 
 
                                 <a href="#" onclick="Add_wishlist('<?php echo $product->id;?>')" class="btn btn-solid"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i><?php echo $this->lang->line('add_to_wishlist');?></a></a>

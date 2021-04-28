@@ -654,30 +654,6 @@
     <!--modal popup end-->
 
 
-
-
-<?php $lwish = $this->session->userdata('product_id');
-/* echo $this->session->userdata('product_id')['name']; */
-if(!empty($lwish))
-{
-    foreach($lwish as $item)
-    {
-        echo $item['name'];
-    }
-}
-/* for($i=0;$i<count($lwish);$i++){
-    echo $lwish[$i];
-}
-echo $lwish['name']; */
-// print_r($lwish);
-//  foreach( $lwish as $it)
-//  {
-//      echo $it['name'];
-//  }
- 
- ?>
-
-
     
 <!-- <-- Quick-view modal popup start--> 
 
@@ -699,19 +675,20 @@ echo $lwish['name']; */
                             <div class="product-right">
                                 <h2><?php echo $item['name'] ;?></h2>
                                 <h3><?php echo $item['price'] ;?></h3>
-                                <ul class="color-variant">
-                                <?php foreach($sizes as $size):?>
-
-                              <?php  if($size['product_id'] == $item['id'])
-                              { ?>
-                                <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>
-
-                              
-                              <?php  }
-                                
-
-
-                            endforeach;?>
+                                <ul class="color-variant product_color_list">
+                                <?php if(!empty($size))
+                                {
+                                        foreach($sizes as $size):?>
+                                        <?php  if($size['product_id'] == $item['id'])
+                                                { ?>
+                                                    <li class="bg-light0 " style="background-color:<?php echo $size['product_stock_color']?>"></li>                               
+                                <?php           }
+                                        endforeach;
+                                }
+                                else
+                                {?>
+                                        <li class="bg-light0 " style="background-color:<?php echo $item['product_color'];?>"></li>
+                                <?php }?>
                                 </ul>
                                 <div class="border-product">
                                     <h6 class="product-title"><?php echo $this->lang->line('details');?></h6>
@@ -720,17 +697,13 @@ echo $lwish['name']; */
                                 </div>
                                 <div class="product-description border-product">
                                 <div class="size-box" id = "size_P">
-                                    <ul>
-
-                                    <?php foreach($sizes as $size):?>
-                                  
+                                    <ul <?php if(empty($sizes)){echo 'class="empty_size"';}?>>
+                                    <?php foreach($sizes as $size):?>                                  
                                    <?php if($size['product_id'] == $item['id'])
                                     { ?>
                                         <li><a href="javascript:void(0)"><?php echo $size['name'];?></a></li>
-                                   <?php  }
-                                    
+                                   <?php  }                                   
                                          endforeach;?>
-
                                     </ul>
                                 </div>
                                     <h6 class="product-title"><?php echo $this->lang->line('select_product_quantity');?></h6>
@@ -738,15 +711,16 @@ echo $lwish['name']; */
                                         <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                     class="btn quantity-left-minus" data-type="minus" data-field=""><i
                                                         class="ti-angle-left"></i></button> </span>
-                                            <input type="text" name="quantity" class="form-control input-number"
-                                                value="1"> <span class="input-group-prepend"><button type="button"
+                                            <input type="number"  class="form-control input-number product_quantity<?=$item['id']?>" value="1"> 
+                                            <span class="input-group-prepend"><button type="button"
                                                     class="btn quantity-right-plus" data-type="plus" data-field=""><i
                                                         class="ti-angle-right"></i></button></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-buttons"><a href="#" class="btn btn-solid"> <?php echo $this->lang->line('add_to_cart');?></a> <a
-                                        href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
+                                <div class="product-buttons">
+                                    <a href="javascript:void(0)" id="cartEffect" class="cartEffect btn btn-solid" data-productid="<?php echo $item['id'] ;?>" data-productname="<?php echo $item['name'] ;?>" data-productprice="<?php echo $item['price'] ;?>" data-productimage="<?php echo $item['image'] ;?>"> <?php echo $this->lang->line('add_to_cart');?></a> 
+                                    <a href="<?php echo base_url('front_end/Product/Single_product/'.$item['id']);?>" class="btn btn-solid"><?php echo $this->lang->line('details');?></a></div>
                             </div>
                         </div>
                     </div>
@@ -766,6 +740,13 @@ echo $lwish['name']; */
         </a>
     </div>
     <!-- cart end -->
+
+        <!-- added to cart notification -->
+        <div class="added-notification">
+        <img src="<?=base_url()?>assets/front/images/fashion/pro/1.jpg" class="img-fluid" alt="">
+        <h3>added to cart</h3>
+    </div>
+    <!-- added to cart notification -->
     
 
 
