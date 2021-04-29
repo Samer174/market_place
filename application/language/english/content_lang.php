@@ -91,3 +91,7 @@ $lang['contact'] = "CONTACT US";
 $lang['testimonial'] = "TESTIMONIAL";
 $lang['faq'] = "FAQ";
 $lang['search_product'] = "SEARCH PRODUCT";
+$lang['profile'] = "Profile";
+$lang['phone'] = "phone";
+$lang['save'] = "save";
+$lang['address'] = "address";

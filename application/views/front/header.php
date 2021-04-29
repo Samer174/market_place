@@ -284,7 +284,8 @@
                                     <?php
                                     if($this->session->userdata('loggedIn_front'))
                                     {
-                                        echo '<li><a href="'.base_url().'front_end/auth/Logout">'.$this->lang->line('logout').'</a></li>';
+                                        echo '<li><a href="'.base_url().'front_end/auth/Profile">'.$this->lang->line('profile').'</a></li>
+                                        <li><a href="'.base_url().'front_end/auth/Logout">'.$this->lang->line('logout').'</a></li>';
                                     }
                                     else
                                     {

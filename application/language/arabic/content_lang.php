@@ -91,3 +91,7 @@ $lang['contact'] = "معلومات التواصل";
 $lang['testimonial'] = "شهادات";
 $lang['faq'] = "اسئلة متكررة";
 $lang['search_product'] = "البحث عن منتج ";
+$lang['profile'] = "الملف الشخصي";
+$lang['phone'] = "هاتف";
+$lang['save'] = "حفط";
+$lang['address'] = "العنوان";
