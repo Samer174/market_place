@@ -15,6 +15,7 @@ class Checkout extends CI_Controller
     {
         if($this->session->userdata('loggedIn_front') == true && $this->session->userdata('status') == 1)
         {       
+            $data['checkout_page']=1;
             $data['categories'] = $this->Category_Model->get_categories();
             $this->load->view('front/header',$data);
             $this->load->view('front/checkout');

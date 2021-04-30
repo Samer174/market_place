@@ -24,6 +24,7 @@ class Profile extends CI_Controller {
             $data['total_salse'] = $this->Profile_Model->total_salse($user_id);
 
             $data['categories'] = $this->Category_Model->get_categories();
+            $data['profile_page']=1;
             $this->load->view('front/header',$data);
             $this->load->view('front/profile');
             $this->load->view('front/footer');
@@ -31,6 +32,41 @@ class Profile extends CI_Controller {
         else
         {
             redirect('Front');
+        }      
+    }
+
+    function edit_profile()
+    {
+        $user_id = $this->input->post("user_id");
+        $name = $this->input->post("user_name");
+        $phone = $this->input->post("user_phone");
+        $address = $this->input->post("user_address");
+
+        $result = $this->Profile_Model->edit($user_id,$name,$phone,$address);
+        if($result)
+        {
+            $user_info = $this->Profile_Model->get_user_info($user_id);
+            echo json_encode($user_info);
+        }
+        else
+        {
+            echo 'error';
+        }      
+    }
+
+    function edit_password()
+    {
+        $user_id = $this->input->post("user_id");
+        $pass = $this->input->post("pass");
+
+        $result = $this->Profile_Model->edit_pass($user_id,$pass);
+        if($result)
+        {
+            echo 'Password Changed Successfuly';
+        }
+        else
+        {
+            echo 'error';
         }      
     }
 

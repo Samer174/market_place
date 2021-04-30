@@ -1222,6 +1222,7 @@ function deleteItem($id)
         });
     </script>
     <script>
+    <?php if(isset($checkout_page) && $checkout_page =1):?>
     $(function () {
         $('#form_checkout').submit( function (e) {
 
@@ -1248,7 +1249,96 @@ function deleteItem($id)
 
         });
     });
+    <?php endif?>
 
+<?php if(isset($profile_page) && $profile_page =1):?>
+    $(function () {
+        $('#profile-edit').submit( function (e) {
+
+          e.preventDefault();
+
+          url = '<?=base_url()?>front_end/auth/profile/edit_profile';
+
+          $.ajax({
+            type: 'post',
+            url: url,
+            data: $('#profile-edit').serialize(),
+            success: function (data) {
+                if(data != 'error')
+                {
+                    var json = JSON.parse(data);
+                    console.log(json.name);
+                    $('#user_profile_name').text(json.name);
+                    $('#user_profile_phone').text(json.phone_number);
+                    $('#user_profile_address').text(json.address);
+                    $('.edit-modal').modal('toggle');
+                    
+                }
+                else
+                {
+                    console.log(data);
+                }         
+            }
+          });
+
+        });
+    });
+
+    $(function () {
+        $('#change_pass_btn').click( function () {
+          $('.form_change_pass').fadeIn();
+
+        });
+
+        $('#form_change_pass_save').click( function () {
+
+          var pass = $('.user_password_edit').val();
+          var user_id = $('#user_id_form_change_pass').val();
+          url = '<?=base_url()?>front_end/auth/profile/edit_password';
+
+          $.ajax({
+            type: 'post',
+            url: url,
+            data: {user_id:user_id,pass:pass},
+            success: function (data) {
+                if(data != 'error')
+                {
+                    console.log(data);
+                    $('#form_change_pass_msg').text(data);
+                    
+                }
+                else
+                {
+                    console.log(data);
+                }         
+            }
+          });
+
+        });
+    });
+
+<?php endif?>
+
+    function cart_pro_quantity(quantity,val) {
+        // console.log(quantity);
+        // console.log(val);
+        url = '<?=base_url()?>front_end/cart/update_quantity';
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: {row_id:val,quantity:quantity},
+            success: function (data) {
+                if(data != 'error')
+                {
+                    console.log(data);                    
+                }
+                else
+                {
+                    console.log(data);
+                }         
+            }
+          });
+    }
 
     $(window).on('load', function () {
             setTimeout(function () {

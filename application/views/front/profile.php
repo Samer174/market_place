@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>vendor dashboard</h2>
+                        <h2><?=$this->lang->line("dashboard")?></h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">vendor dashboard</li>
+                            <li class="breadcrumb-item"><a href="<?=base_url()?>"><?=$this->lang->line("home")?></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?=$this->lang->line("dashboard")?></li>
                         </ol>
                     </nav>
                 </div>
@@ -39,20 +39,20 @@
                         <div class="faq-tab">
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-bs-toggle="tab" class="nav-link active"
-                                        href="#dashboard">dashboard</a></li>
+                                        href="#dashboard"><?=$this->lang->line("dashboard")?></a></li>
                                 <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
-                                        href="#products">products</a>
+                                        href="#products"><?=$this->lang->line("products")?></a>
                                 </li>
-                                <li class="nav-item"><a data-bs-toggle="tab" class="nav-link" href="#orders">orders</a>
-                                </li>
-                                <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
-                                        href="#profile">profile</a>
+                                <li class="nav-item"><a data-bs-toggle="tab" class="nav-link" href="#orders"><?=$this->lang->line("orders")?></a>
                                 </li>
                                 <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
-                                        href="#settings">settings</a>
+                                        href="#profile"><?=$this->lang->line("profile")?></a>
+                                </li>
+                                <li class="nav-item"><a data-bs-toggle="tab" class="nav-link"
+                                        href="#settings"><?=$this->lang->line("settings")?></a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#logout"
-                                        href="#">logout</a>
+                                        href="#"><?=$this->lang->line("logout")?></a>
                                 </li>
                             </ul>
                         </div>
@@ -68,7 +68,7 @@
                                             <img src="<?=base_url()?>assets/front/images/icon/dashboard/order.png" class="img-fluid">
                                             <div>
                                                 <h3><?=count($order_products)?></h3>
-                                                <h5>total products</h5>
+                                                <h5><?=$this->lang->line("total_products")?></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                             <img src="<?=base_url()?>assets/front/images/icon/dashboard/sale.png" class="img-fluid">
                                             <div>
                                                 <h3><?=$total_salse->price?></h3>
-                                                <h5>total sales</h5>
+                                                <h5><?=$this->lang->line("total_purchases")?></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                                                     echo $number;
                                                     ?>
                                                 </h3>
-                                                <h5>order pending</h5>
+                                                <h5><?=$this->lang->line("order_pending")?></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -166,13 +166,13 @@
                                 <div class="col-lg-12 col-md-6">
                                     <div class="card dashboard-table">
                                         <div class="card-body">
-                                            <h3>recent orders</h3>
+                                            <h3><?=$this->lang->line("order_pending")?></h3>
                                             <table class="table mb-0">
                                             <thead>
                                                     <tr>
-                                                        <th scope="col">order id</th>
-                                                        <th scope="col">status</th>
-                                                        <th scope="col">price</th>
+                                                        <th scope="col"><?=$this->lang->line("order_id")?></th>
+                                                        <th scope="col"><?=$this->lang->line("order_status")?></th>
+                                                        <th scope="col"><?=$this->lang->line("order_price")?></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -217,17 +217,17 @@
                                         <div class="card-body table-responsive-md">
                                             <div class="top-sec">
                                                 <h3>all products</h3>
-                                                <a href="#" class="btn btn-sm btn-solid">add product</a>
+                                                <a href="#" class="btn btn-sm btn-solid"><?=$this->lang->line("add_products")?></a>
                                             </div>
                                             <table class="table mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">image</th>
-                                                        <th scope="col">product name</th>
-                                                        <th scope="col">category</th>
-                                                        <th scope="col">price</th>
-                                                        <th scope="col">quantity</th>
-                                                        <th scope="col">edit/delete</th>
+                                                        <th scope="col"><?=$this->lang->line("image")?></th>
+                                                        <th scope="col"><?=$this->lang->line("product_name")?></th>
+                                                        <th scope="col"><?=$this->lang->line("category")?></th>
+                                                        <th scope="col"><?=$this->lang->line("price")?></th>
+                                                        <th scope="col"><?=$this->lang->line("quantity")?></th>
+                                                        <th scope="col"><?=$this->lang->line("edit_delete")?></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -236,8 +236,26 @@
                                                         <th scope="row"><img
                                                                 src="<?=base_url()?>uploads/product/<?=$row["image"]?>"
                                                                 class="blur-up lazyloaded"></th>
-                                                        <td style="width: 200px;"><?=$row["product_name"]?></td>
-                                                        <td><?=$row["category_name"]?></td>
+                                                        <td style="width: 200px;">
+                                                            <?php if($this->session->userdata('site_lang') == "english")
+                                                                    {
+                                                                        echo $row["product_name"];
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo $row["product_name_ar"];
+                                                                    }?>
+                                                        </td>
+                                                        <td>
+                                                            <?php if($this->session->userdata('site_lang') == "english")
+                                                                    {
+                                                                        echo $row["category_name"];
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo $row["category_name_ar"];
+                                                                    }?>
+                                                        </td>
                                                         <td>$<?=$row["price"]?></td>
                                                         <td><?=$row["quantity"]?></td>
                                                         <td><i class="fa fa-pencil-square-o me-1"
@@ -258,15 +276,15 @@
                                     <div class="card dashboard-table mt-0">
                                         <div class="card-body table-responsive-sm">
                                             <div class="top-sec">
-                                                <h3>orders</h3>
-                                                <a href="#" class="btn btn-sm btn-solid">add product</a>
+                                                <h3><?=$this->lang->line("orders")?></h3>
+                                                <a href="#" class="btn btn-sm btn-solid"><?=$this->lang->line("add_products")?></a>
                                             </div>
                                             <table class="table mb-0">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">order id</th>
-                                                        <th scope="col">status</th>
-                                                        <th scope="col">price</th>
+                                                        <th scope="col"><?=$this->lang->line("order_id")?></th>
+                                                        <th scope="col"><?=$this->lang->line("order_status")?></th>
+                                                        <th scope="col"><?=$this->lang->line("order_price")?></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -306,25 +324,25 @@
                                         <div class="card-body">
                                             <div class="dashboard-box">
                                                 <div class="dashboard-title">
-                                                    <h4>profile</h4>
-                                                    <span data-bs-toggle="modal" data-bs-target="#edit-profile">edit</span>
+                                                    <h4><?=$this->lang->line("profile")?></h4>
+                                                    <span data-bs-toggle="modal" data-bs-target="#edit-profile"><?=$this->lang->line("edit")?></span>
                                                 </div>
                                                 <div class="dashboard-detail">
                                                     <ul>
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>Name</h6>
+                                                                    <h6><?=$this->lang->line("name")?></h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6><?=$user_info->name?></h6>
+                                                                    <h6 id="user_profile_name"><?=$user_info->name?></h6>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>email address</h6>
+                                                                    <h6><?=$this->lang->line("email")?></h6>
                                                                 </div>
                                                                 <div class="right">
                                                                     <h6><?=$user_info->email?></h6>
@@ -334,24 +352,32 @@
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>Phone Number</h6>
+                                                                    <h6><?=$this->lang->line("phone")?></h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6><?=$user_info->phone_number?></h6>
+                                                                    <h6 id="user_profile_phone"><?=$user_info->phone_number?></h6>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="details">
                                                                 <div class="left">
-                                                                    <h6>Address</h6>
+                                                                    <h6><?=$this->lang->line("address")?></h6>
                                                                 </div>
                                                                 <div class="right">
-                                                                    <h6><?=$user_info->address?></h6>
+                                                                    <h6 id="user_profile_address"><?=$user_info->address?></h6>
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        
+                                                        <li>
+                                                        <span id="change_pass_btn" style="text-transform: capitalize;color: var(--theme-deafult);cursor: pointer;"><?=$this->lang->line("change_pass")?></span>
+                                                        <div class="form-group form_change_pass" style="margin-top: 5px;display:none">
+                                                            <input type="password" class="form-control user_password_edit" style="width: 200px;display: inline-block;" name="user_password" id="password" placeholder="<?php echo $this->lang->line('password'); ?>">
+                                                            <input id="user_id_form_change_pass" type="number" hidden name="user_id" value="<?=$this->session->userdata("user_id")?>"/>
+                                                            <button id="form_change_pass_save" class="btn btn-solid" style="display: inline-block;padding: 7px 13px;margin-bottom: 6px;margin-left: 6px;margin-right: 6px;"><?=$this->lang->line("save")?></button>
+                                                            <span id="form_change_pass_msg" style="color: var(--theme-deafult);"></span>
+                                                        </div>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -367,11 +393,11 @@
                                         <div class="card-body">
                                             <div class="dashboard-box">
                                                 <div class="dashboard-title">
-                                                    <h4>settings</h4>
+                                                    <h4><?=$this->lang->line("settings")?></h4>
                                                 </div>
                                                 <div class="dashboard-detail">
                                                     <div class="account-setting">
-                                                        <h5>Notifications</h5>
+                                                        <h5><?=$this->lang->line("notifications")?></h5>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="form-check">
@@ -380,7 +406,7 @@
                                                                         id="exampleRadios1" value="option1" checked>
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios1">
-                                                                        Allow Desktop Notifications
+                                                                        <?=$this->lang->line("allow_desktop_notifications")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -389,7 +415,7 @@
                                                                         id="exampleRadios2" value="option2">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios2">
-                                                                        Enable Notifications
+                                                                        <?=$this->lang->line("enable_notifications")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -398,7 +424,7 @@
                                                                         id="exampleRadios3" value="option3">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios3">
-                                                                        Get notification for my own activity
+                                                                        <?=$this->lang->line("get_notification_for_my_own_activity")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -414,7 +440,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="account-setting">
-                                                        <h5>deactivate account</h5>
+                                                        <h5><?=$this->lang->line("deactivate_account")?></h5>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="form-check">
@@ -423,7 +449,7 @@
                                                                         id="exampleRadios4" value="option4" checked>
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios4">
-                                                                        I have a privacy concern
+                                                                        <?=$this->lang->line("i_have_privacy_concern")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -432,7 +458,7 @@
                                                                         id="exampleRadios5" value="option5">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios5">
-                                                                        This is temporary
+                                                                        <?=$this->lang->line("temporary")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -441,17 +467,16 @@
                                                                         id="exampleRadios6" value="option6">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios6">
-                                                                        other
+                                                                        <?=$this->lang->line("other")?>
                                                                     </label>
                                                                 </div>
                                                                 <button type="button"
-                                                                    class="btn btn-solid btn-xs">Deactivate
-                                                                    Account</button>
+                                                                    class="btn btn-solid btn-xs"><?=$this->lang->line("deactivate_account")?></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="account-setting">
-                                                        <h5>Delete account</h5>
+                                                        <h5><?=$this->lang->line("delete_account")?></h5>
                                                         <div class="row">
                                                             <div class="col">
                                                                 <div class="form-check">
@@ -460,7 +485,7 @@
                                                                         id="exampleRadios7" value="option7" checked>
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios7">
-                                                                        No longer usable
+                                                                        <?=$this->lang->line("no_longer_usable")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -469,7 +494,7 @@
                                                                         id="exampleRadios8" value="option8">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios8">
-                                                                        Want to switch on other account
+                                                                        <?=$this->lang->line("want_to_switch_on_other_account")?>
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check">
@@ -478,11 +503,11 @@
                                                                         id="exampleRadios9" value="option9">
                                                                     <label class="form-check-label"
                                                                         for="exampleRadios9">
-                                                                        other
+                                                                        <?=$this->lang->line("other")?>
                                                                     </label>
                                                                 </div>
                                                                 <button type="button"
-                                                                    class="btn btn-solid btn-xs">Delete Account</button>
+                                                                    class="btn btn-solid btn-xs"><?=$this->lang->line("delete_account")?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -506,51 +531,56 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Logging Out</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><?=$this->lang->line("logout")?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    Do you want to log out?
+                <?=$this->lang->line("logout_msg")?>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="btn btn-dark btn-custom" data-bs-dismiss="modal">no</a>
-                    <a href="<?=base_url()?>front_end/logout" class="btn btn-solid btn-custom">yes</a>
+                    <a href="#" class="btn btn-dark btn-custom" data-bs-dismiss="modal"><?=$this->lang->line("no")?></a>
+                    <a href="<?=base_url()?>front_end/logout" class="btn btn-solid btn-custom"><?=$this->lang->line("yes")?></a>
                 </div>
             </div>
         </div>
     </div>
     <!-- modal end -->
         <!-- Modal start -->
-    <div class="modal fade" id="edit-profile"  role="modal" aria-hidden="true" role="dialog"> 
-        <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal edit-modal fade bd-example-modal-lg theme-modal" id="edit-profile"  tabindex="-1" role="dialog" aria-hidden="true"> 
+        <div class="modal-dialog  modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><?=$this->lang->line("edit_profile")?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="theme-form" style="margin: 0 40px;">
-                    <div class="modal-body">          
-                        <div class="form-group">
-                            <label for="name"><?php echo $this->lang->line('name'); ?></label>
-                            <input type="text" class="form-control" name="user_name" id="name" placeholder="<?php echo $this->lang->line('name'); ?>" value="<?=$user_info->name?>" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="email"><?php echo $this->lang->line('email'); ?></label>
-                            <input type="text" class="form-control" name="user_email" id="email" placeholder="<?php echo $this->lang->line('email'); ?>" value="<?=$user_info->email?>" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone"><?php echo $this->lang->line('phone'); ?></label>
-                            <input type="text" class="form-control" name="user_phone" id="phone"
-                                placeholder="<?php echo $this->lang->line('phone'); ?>" value="<?=$user_info->phone_number?>" required="">
-                        </div>    
-                        <div class="form-group">
-                            <label for="address"><?php echo $this->lang->line('address'); ?></label>
-                            <input type="text" class="form-control" name="user_phone" id="phone"
-                                placeholder="<?php echo $this->lang->line('address'); ?>" value="<?=$user_info->address?>" required="">
+                <form id="profile-edit" class="theme-form" style="margin: 0 40px;">
+                    <div class="modal-body">   
+                        <div class="container-fluid p-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="modal-bg" style="padding-top: 0;padding-bottom: 0;">       
+                                        <div class="form-group">
+                                            <label for="name"><?php echo $this->lang->line('name'); ?></label>
+                                            <input type="text" class="form-control" name="user_name" id="name" placeholder="<?php echo $this->lang->line('name'); ?>" value="<?=$user_info->name?>" required="">
+                                            <input type="number" hidden name="user_id" value="<?=$this->session->userdata("user_id")?>"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone"><?php echo $this->lang->line('phone'); ?></label>
+                                            <input type="text" class="form-control" name="user_phone" id="phone"
+                                                placeholder="<?php echo $this->lang->line('phone'); ?>" value="<?=$user_info->phone_number?>" required="">
+                                        </div>    
+                                        <div class="form-group">
+                                            <label for="address"><?php echo $this->lang->line('address'); ?></label>
+                                            <input type="text" class="form-control" name="user_address" id="phone"
+                                                placeholder="<?php echo $this->lang->line('address'); ?>" value="<?=$user_info->address?>" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>               
                     </div>
                     <div class="modal-footer">
@@ -561,3 +591,5 @@
         </div>
     </div>
     <!-- modal end -->
+
+    

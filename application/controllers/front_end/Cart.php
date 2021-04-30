@@ -99,7 +99,7 @@ class Cart extends CI_Controller
         $output .= '
             <li>
                 <div class="total">
-                    <h5>subtotal : <span>$'.number_format($this->cart->total()).'</span></h5>
+                    <h5>'.$this->lang->line("cart_product_total").' : <span>$'.number_format($this->cart->total()).'</span></h5>
                 </div>
             </li>
             <li>
@@ -112,6 +112,26 @@ class Cart extends CI_Controller
 
     function load_cart(){ 
         echo $this->show_cart();
+    }
+
+    public function update_quantity()
+    {
+        $row_id = $this->input->post('row_id');
+        if(isset($row_id))
+        {
+            $quantity = $this->input->post('quantity');
+            $data = array(
+                'rowid' => $row_id,
+                'qty'   => $quantity
+            );
+            
+            $this->cart->update($data);
+            echo 'success';
+        }
+        else
+        {
+            echo 'error';
+        }
     }
 
     function delete_cart(){ 

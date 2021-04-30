@@ -41,5 +41,31 @@ class Profile_Model extends CI_Model
         return $query;
     }
 
+    public function edit($user_id,$name,$phone,$address)
+    {
+        $this->db->set('name',$name);
+        $this->db->set('phone_number',$phone);
+        $this->db->set('address',$address);
+        $this->db->where('u_id',$user_id);
+        $this->db->update('app_user');
+
+        if($this->db->affected_rows() > 0)
+        {
+            return true;
+        }
+    }
+
+    public function edit_pass($user_id,$pass)
+    {
+        $this->db->set('password',md5($pass));
+        $this->db->where('u_id',$user_id);
+        $this->db->update('app_user');
+
+        if($this->db->affected_rows() > 0)
+        {
+            return true;
+        }
+    }
+
 
 }

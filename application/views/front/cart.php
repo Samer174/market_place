@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>cart</h2>
+                        <h2><?=$this->lang->line("cart")?></h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">cart</li>
+                            <li class="breadcrumb-item"><a href="index.html"><?=$this->lang->line("home")?></a></li>
+                            <li class="breadcrumb-item active"><?=$this->lang->line("cart")?></li>
                         </ol>
                     </nav>
                 </div>
@@ -112,7 +112,7 @@
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <input type="number" name="quantity" class="form-control input-number"
-                                                value="<?php echo $items['qty'];?>">
+                                                value="<?php echo $items['qty'];?>" onchange="cart_pro_quantity(this.value,'<?php echo $items['rowid'];?>')">
                                         </div>
                                     </div>
                                 </td>
