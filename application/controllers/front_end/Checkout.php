@@ -8,6 +8,7 @@ class Checkout extends CI_Controller
 
          $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/Checkout_Model');
+         $this->load->model('front_model/Contact_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
     }
 
@@ -16,6 +17,7 @@ class Checkout extends CI_Controller
         if($this->session->userdata('loggedIn_front') == true && $this->session->userdata('status') == 1)
         {       
             $data['categories'] = $this->Category_Model->get_categories();
+            $data['contact'] = $this->Contact_Model->get_des();
             $this->load->view('front/header',$data);
             $this->load->view('front/checkout');
             $this->load->view('front/footer');
@@ -24,6 +26,7 @@ class Checkout extends CI_Controller
         {
             $data['error_msg'] = 'activate your account to checkout or <a href="'.base_url("front_end/auth/login").'">login</a>';
             $data['categories'] = $this->Category_Model->get_categories();
+            $data['contact'] = $this->Contact_Model->get_des();
             $this->load->view('front/header',$data);
             $this->load->view('front/index');
             $this->load->view('front/footer');
@@ -150,6 +153,7 @@ class Checkout extends CI_Controller
         $data['order'] = $this->Checkout_Model->get_order($order_id);   
         $data['products_of_order'] = $this->Checkout_Model->products_of_order($order_id); 
         $data['categories'] = $this->Category_Model->get_categories();
+        $data['contact'] = $this->Contact_Model->get_des();
         $this->load->view('front/header',$data);
         $this->load->view('front/order-success');
         $this->load->view('front/footer');

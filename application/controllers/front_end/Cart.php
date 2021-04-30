@@ -6,6 +6,7 @@ class Cart extends CI_Controller
 
          $this->load->model('front_model/Product_Model');
          $this->load->model('front_model/Category_Model');
+         $this->load->model('front_model/Contact_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
         
     }
@@ -13,7 +14,7 @@ class Cart extends CI_Controller
     function index()
     {
         $data['categories'] = $this->Category_Model->get_categories();
-
+        $data['contact'] = $this->Contact_Model->get_des();
         $data["cart"] = $this->cart->contents();
 
         $this->load->view('front/header', $data);

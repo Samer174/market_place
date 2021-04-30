@@ -8,6 +8,7 @@ class Brands extends CI_Controller
 
          $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/Brand_Model');
+         $this->load->model('front_model/Contact_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
     }
 
@@ -15,6 +16,7 @@ class Brands extends CI_Controller
     {
         $data['categories'] = $this->Category_Model->get_categories();
         $data['brands'] = $this->Brand_Model->get_brands();
+        $data['contact'] = $this->Contact_Model->get_des();
         // print_r($data['about']);
         $this->load->view('front/header',$data);
         $this->load->view('front/brands');

@@ -8,6 +8,7 @@ class FAQ extends CI_Controller
 
          $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/FAQ_Model');
+         $this->load->model('front_model/Contact_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
     }
 
@@ -15,6 +16,7 @@ class FAQ extends CI_Controller
     {
         $data['categories'] = $this->Category_Model->get_categories();
         $data['faq'] = $this->FAQ_Model->get_faq();
+        $data['contact'] = $this->Contact_Model->get_des();
         // print_r($data['about']);
         $this->load->view('front/header',$data);
         $this->load->view('front/faq');

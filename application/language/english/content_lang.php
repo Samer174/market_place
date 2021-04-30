@@ -95,3 +95,5 @@ $lang['profile'] = "Profile";
 $lang['phone'] = "phone";
 $lang['save'] = "save";
 $lang['address'] = "address";
+$lang['msg'] = "Message";
+$lang['send'] = "Send";

@@ -8,6 +8,7 @@ class Front extends CI_Controller
          $this->load->model('front_model/Category_Model');
          $this->load->model('front_model/Product_Model');
          $this->load->model('front_model/Brand_Model');
+         $this->load->model('front_model/Contact_Model');
     }
 
     public function index()
@@ -39,6 +40,7 @@ class Front extends CI_Controller
         $data['latest_products'] = $this->Product_Model->get_latest_products();
         $data['categories_with_preiority'] = $categories_with_preiority;
         $data['brands'] = $this->Brand_Model->get_brands();
+        $data['contact'] = $this->Contact_Model->get_des();
 
         // $id = $this->input->post('id');
         $data['sizes'] = $this->Product_Model->get_sizes_all();

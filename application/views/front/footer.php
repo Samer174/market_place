@@ -85,15 +85,16 @@
                     <div class="col">
                         <div class="sub-title">
                             <div class="footer-title">
-                                <h4>store information</h4>
+                                <h4><?php echo $this->lang->line('contact');?></h4>
                             </div>
                             <div class="footer-contant">
                                 <ul class="contact-list">
-                                    <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
-                                    </li>
-                                    <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
-                                    <li><i class="fa fa-envelope-o"></i>Email Us: Support@Multikart.com</li>
-                                    <li><i class="fa fa-fax"></i>Fax: 123456</li>
+                                <?php if($this->session->userdata('site_lang') =="arabic"){?>
+                                    <?php echo $contact[0]['description_ar'];?>
+                               <?php }else{?>
+                                    <?php echo $contact[0]['description'];?>
+                              <?php  }
+                                    ?>
                                 </ul>
                             </div>
                         </div>

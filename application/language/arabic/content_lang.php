@@ -95,3 +95,5 @@ $lang['profile'] = "الملف الشخصي";
 $lang['phone'] = "هاتف";
 $lang['save'] = "حفط";
 $lang['address'] = "العنوان";
+$lang['msg'] = "الرسالة";
+$lang['send'] = "ارسال";
