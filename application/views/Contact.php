@@ -173,6 +173,43 @@ License: You must have a valid license purchased only from themeforest(the above
                 </form>
                 </div>
                 <!-- END PAGE TITLE-->
+    <br>
+    <br>
+    <div class="page-bar">
+                    <ul class="bg-dark">
+                       
+                        <li>
+                            <span><h1>Customers' Contact Messages </h1> us</span>
+                        </li>
+                    </ul>
+
+                </div>
+    
+                <table class="table table-striped table-bordered table-responsive-sm">
+                
+                    <thead>
+
+                    <tr class="table-head">
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Last Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Message</th>
+                        
+                    </tr>
+                    </thead>
+                <?php foreach($msgs as $msg):?>
+                   <tbody>
+                   <tr>
+                        <td><?php echo $msg['name'];?></td>
+                        <td><?php echo $msg['last_name'];?></td>
+                        <td><?php echo $msg['phone'];?></td>
+                        <td><?php echo $msg['email'];?></td>
+                        <td><?php echo $msg['msg'];?></td>
+                    </tr>
+                   </tbody>
+               <?php endforeach;?>
+                </table>
 
 
             </div>

@@ -23,4 +23,14 @@ class Contact extends CI_Model
             return null;
         }
     }
+    public function get_msg()
+    {
+        $data = $this->db->get('contact_msg');
+        if($data->num_rows()){
+            return $data->result_array();
+        }
+        else{
+            return null;
+        }
+    }
 }

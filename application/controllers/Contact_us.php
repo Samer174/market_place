@@ -12,7 +12,8 @@ class Contact_us extends CI_Controller
     {
         $this->load->model('Contact');
         $r_data = $this->Contact->get_des();
-        $this->load->view('Contact',array('r_data'=>$r_data));
+        $user_msg = $this->Contact->get_msg();
+        $this->load->view('Contact',array('r_data'=>$r_data,'msgs'=>$user_msg));
         if(isset($_POST['submit_des'])){
             if($r_data == null){
                 $this->db->insert('contact_us',array('description'=>$_POST['des'],
