@@ -5,6 +5,7 @@ class Product extends CI_Controller
         parent::__construct();
 
          $this->load->model('front_model/Product_Model');
+         $this->load->model('front_model/Contact_Model');
          $this->lang->load('content', $this->session->userdata('site_lang'));
         
     }
@@ -24,6 +25,7 @@ class Product extends CI_Controller
         $colors = $this->Product_Model->get_color($id);
 
         $sizes = $this->Product_Model->get_sizes($id);
+        $contact= $this->Contact_Model->get_des();
      /*  print_r($sizes); */
      
      $related_products =array();
@@ -35,7 +37,7 @@ class Product extends CI_Controller
 
      
       $this->load->view('front/header');
-      $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes,'related_products'=> $related_products));
+      $this->load->view('front/product_page_nosidebar',array('product'=>$data,'images'=>$all_img ,'colors'=>$colors,'sizes'=>$sizes,'related_products'=> $related_products,'contact'=>$contact));
       $this->load->view('front/footer');
     }
 

@@ -130,3 +130,5 @@ $lang['want_to_switch_on_other_account'] = "Want to switch on other account";
 $lang['logout_msg'] = "Do you want to log out?";
 $lang['yes'] = "Yes";
 $lang['no'] = "No";
+$lang['msg'] = "Message";
+$lang['send'] = "Send";

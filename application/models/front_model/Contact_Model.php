@@ -17,4 +17,8 @@ class Contact_Model extends CI_Model
             return null;
         }
     }
+    public function insert_contact_info($content)
+    {
+        $this->db->insert('contact_msg',$content);
+    }
 }
